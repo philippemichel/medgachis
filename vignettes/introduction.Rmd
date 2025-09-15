@@ -1,0 +1,94 @@
+---
+title: "Introduction to medgachis: Medical Economic Analysis in Anesthesia"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Introduction to medgachis}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(medgachis)
+```
+
+## Introduction
+
+The `medgachis` package provides tools for conducting medical economic studies in anesthesia. This vignette demonstrates the main functions and their applications.
+
+## Cost-Effectiveness Analysis
+
+### Calculating ICER (Incremental Cost-Effectiveness Ratio)
+
+The `calculate_icer()` function helps determine the cost-effectiveness of interventions:
+
+```{r icer_example}
+# Compare a new anesthetic technique vs standard care
+icer <- calculate_icer(
+  cost_intervention = 1500,    # Cost of new technique
+  cost_control = 1200,         # Cost of standard care
+  effect_intervention = 0.95,  # Effectiveness of new technique
+  effect_control = 0.85        # Effectiveness of standard care
+)
+
+print(paste("ICER:", icer, "cost units per effectiveness unit"))
+```
+
+### Calculating Total Anesthesia Costs
+
+Use `calculate_anesthesia_cost()` to estimate total procedure costs:
+
+```{r cost_example}
+# Calculate cost for a 2-hour surgery
+total_cost <- calculate_anesthesia_cost(
+  personnel_cost = 150,   # Cost per hour for anesthesia team
+  duration_hours = 2,     # Duration of procedure
+  medication_cost = 45,   # Cost of medications
+  equipment_cost = 25     # Cost of equipment usage
+)
+
+print(paste("Total anesthesia cost:", total_cost, "cost units"))
+```
+
+## Data Analysis
+
+### Summarizing Patient Outcomes
+
+The `summarize_outcomes()` function provides descriptive statistics:
+
+```{r outcomes_example}
+# Example patient satisfaction scores
+outcomes <- c(95, 92, 88, 96, 89, 94, 91, 93, 87, 97)
+groups <- c(rep("intervention", 5), rep("control", 5))
+
+summary_stats <- summarize_outcomes(outcomes, groups)
+print(summary_stats)
+```
+
+### Data Validation
+
+Ensure data quality with `validate_study_data()`:
+
+```{r validation_example}
+# Create example study data
+study_data <- data.frame(
+  patient_id = 1:10,
+  cost = runif(10, 1000, 2000),
+  outcome = runif(10, 0.8, 1.0),
+  group = rep(c("intervention", "control"), each = 5)
+)
+
+# Validate the data
+is_valid <- validate_study_data(study_data, c("patient_id", "cost", "outcome", "group"))
+print(paste("Data is valid:", is_valid))
+```
+
+## Conclusion
+
+The `medgachis` package provides essential tools for medical economic analysis in anesthesia, including cost-effectiveness calculations, cost estimation, and data validation functions.
