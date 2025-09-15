@@ -20,6 +20,7 @@
 
 # RStudio files
 .Rproj.user/
+*.Rproj
 
 # produced vignettes
 vignettes/*.html
@@ -47,3 +48,17 @@ po/*~
 
 # RStudio Connect folder
 rsconnect/
+
+# Quarto output files
+*.html
+*.pdf
+_freeze/
+
+# Analysis output files
+analysis/*.png
+analysis/*.pdf
+analysis/*.json
+analysis/*.rds
+
+# Test files
+test_*.R
