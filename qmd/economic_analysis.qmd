@@ -1,0 +1,205 @@
+---
+title: "Economic Analysis in Anesthesia"
+subtitle: "Cost-Effectiveness Analysis Report"
+author: "Philippe Michel"
+date: "`r format(Sys.Date(), '%B %d, %Y')`"
+format:
+  html:
+    theme: bootstrap
+    toc: true
+    toc-depth: 2
+    code-fold: true
+    code-summary: "Show code"
+    fig-cap-location: bottom
+    fig-width: 8
+    fig-height: 6
+  pdf:
+    documentclass: article
+    geometry: margin=1in
+    fontsize: 11pt
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+# Introduction
+
+This report presents a comprehensive economic analysis comparing anesthesia protocols in terms of cost-effectiveness. The analysis follows established health economic evaluation guidelines and includes:
+
+- Cost-effectiveness analysis (CEA)
+- Incremental cost-effectiveness ratio (ICER) calculation
+- Uncertainty analysis using bootstrap methods
+- Cost-effectiveness acceptability curves
+
+```{r setup}
+#| include: false
+library(dplyr)
+library(ggplot2)
+library(knitr)
+library(DT)
+library(plotly)
+
+# Load custom functions (if package is not installed)
+if (!require(medgachis, quietly = TRUE)) {
+  source("../R/economic_analysis.R")
+}
+
+# Load data
+load("../data/anesthesia_costs.rda")
+```
+
+# Data Overview
+
+The analysis includes data from `r nrow(anesthesia_costs)` patients allocated to two treatment arms:
+
+```{r data-summary}
+#| tbl-cap: "Patient characteristics by treatment group"
+
+summary_table <- anesthesia_costs %>%
+  group_by(treatment) %>%
+  summarise(
+    N = n(),
+    `Mean Age (SD)` = paste0(round(mean(age, na.rm = TRUE), 1), " (", round(sd(age, na.rm = TRUE), 1), ")"),
+    `Mean BMI (SD)` = paste0(round(mean(bmi, na.rm = TRUE), 1), " (", round(sd(bmi, na.rm = TRUE), 1), ")"),
+    `ASA Score 1-2 (%)` = paste0(round(100 * sum(asa_score <= 2) / n(), 1), "%"),
+    `Complications (%)` = paste0(round(100 * sum(complications) / n(), 1), "%"),
+    .groups = "drop"
+  )
+
+kable(summary_table, format = "html", table.attr = "class='table table-striped'")
+```
+
+# Cost-Effectiveness Analysis
+
+## Primary Analysis
+
+```{r economic-analysis}
+# Perform economic analysis
+cea_results <- economic_analysis(
+  costs = anesthesia_costs$cost,
+  effects = anesthesia_costs$qaly,
+  treatment = anesthesia_costs$treatment,
+  willingness_to_pay = 50000
+)
+
+# Display summary statistics
+kable(cea_results$summary_stats, 
+      caption = "Cost and effect summary by treatment",
+      format = "html",
+      table.attr = "class='table table-striped'",
+      col.names = c("Treatment", "Mean Cost ($)", "Mean QALYs", "N"))
+```
+
+### Key Results
+
+```{r key-results}
+#| results: asis
+
+cat("**Incremental Cost-Effectiveness Ratio (ICER):** $", 
+    format(round(cea_results$icer, 0), big.mark = ","), " per QALY gained\n\n")
+
+cat("**Net Monetary Benefit:** $", 
+    format(round(cea_results$net_monetary_benefit, 0), big.mark = ","), "\n\n")
+
+cat("**Cost-Effective at $50,000 WTP threshold:** ", 
+    ifelse(cea_results$cost_effective, "Yes", "No"), "\n\n")
+```
+
+## Cost-Effectiveness Plane
+
+```{r ce-plane}
+#| fig-cap: "Cost-effectiveness plane showing bootstrap replicates"
+
+# Create cost-effectiveness plane
+ce_plot <- plot_ce_plane(cea_results)
+ggplotly(ce_plot)
+```
+
+## Sensitivity Analysis
+
+```{r sensitivity}
+#| fig-cap: "Cost-effectiveness acceptability curve"
+
+# Calculate probability of cost-effectiveness at different WTP thresholds
+wtp_range <- seq(0, 100000, by = 5000)
+prob_ce <- sapply(wtp_range, function(wtp) {
+  bootstrap_data <- cea_results$bootstrap_results$t
+  delta_cost <- bootstrap_data[, 1]
+  delta_effect <- bootstrap_data[, 2]
+  
+  # Remove infinite values
+  valid_indices <- is.finite(delta_cost) & is.finite(delta_effect)
+  delta_cost <- delta_cost[valid_indices]
+  delta_effect <- delta_effect[valid_indices]
+  
+  # Calculate NMB for each bootstrap replicate
+  nmb <- delta_effect * wtp - delta_cost
+  
+  # Probability of positive NMB
+  mean(nmb > 0, na.rm = TRUE)
+})
+
+ceac_data <- data.frame(
+  wtp = wtp_range,
+  probability = prob_ce
+)
+
+ceac_plot <- ggplot(ceac_data, aes(x = wtp, y = probability)) +
+  geom_line(color = "blue", size = 1) +
+  geom_hline(yintercept = 0.5, linetype = "dashed", color = "red") +
+  labs(
+    title = "Cost-Effectiveness Acceptability Curve",
+    x = "Willingness to Pay per QALY ($)",
+    y = "Probability of Cost-Effectiveness"
+  ) +
+  scale_x_continuous(labels = scales::dollar_format()) +
+  scale_y_continuous(labels = scales::percent_format()) +
+  theme_minimal()
+
+ggplotly(ceac_plot)
+```
+
+# Budget Impact Analysis
+
+```{r budget-impact}
+#| tbl-cap: "Budget impact over 5 years"
+
+# Estimate budget impact
+population_size <- 1000  # patients per year
+years <- 1:5
+
+budget_impact <- data.frame(
+  Year = years,
+  `Standard Cost` = population_size * cea_results$summary_stats$mean_cost[1] * years,
+  `New Protocol Cost` = population_size * cea_results$summary_stats$mean_cost[2] * years,
+  `Additional Cost` = population_size * (cea_results$summary_stats$mean_cost[2] - cea_results$summary_stats$mean_cost[1]) * years
+)
+
+budget_impact[, 2:4] <- lapply(budget_impact[, 2:4], function(x) paste0("$", format(round(x), big.mark = ",")))
+
+kable(budget_impact, format = "html", table.attr = "class='table table-striped'")
+```
+
+# Conclusions
+
+Based on the economic analysis:
+
+1. **Cost-Effectiveness**: The new anesthesia protocol has an ICER of $`r format(round(cea_results$icer, 0), big.mark = ",")` per QALY gained.
+
+2. **Uncertainty**: The bootstrap analysis provides confidence intervals around the cost-effectiveness estimates.
+
+3. **Policy Implications**: 
+   - At a willingness-to-pay threshold of $50,000 per QALY, the new protocol is `r ifelse(cea_results$cost_effective, "cost-effective", "not cost-effective")`.
+   - Decision makers should consider the probability of cost-effectiveness shown in the acceptability curve.
+
+4. **Budget Impact**: Implementation would require additional budget of $`r format(round(population_size * (cea_results$summary_stats$mean_cost[2] - cea_results$summary_stats$mean_cost[1]), 0), big.mark = ",")` per 1,000 patients per year.
+
+# Methods
+
+- **Analysis Type**: Cost-effectiveness analysis with incremental approach
+- **Perspective**: Healthcare system
+- **Time Horizon**: Single procedure
+- **Discount Rate**: Not applicable (short time horizon)
+- **Currency**: USD, 2024 values
+- **Statistical Methods**: Bootstrap resampling (n=1,000) for uncertainty analysis

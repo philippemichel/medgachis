@@ -1,0 +1,32 @@
+Package: medgachis
+Title: Economic and Clinical Trial Analysis in Anesthesia
+Version: 0.1.0
+Authors@R: 
+    person("Philippe", "Michel", , "philippe.michel@example.com", role = c("aut", "cre"))
+Description: A comprehensive analysis package for medical-economic studies in anesthesia, 
+    including clinical trial analysis and economic evaluation tools using R and Quarto.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.3
+Depends: 
+    R (>= 4.1.0)
+Imports:
+    dplyr,
+    ggplot2,
+    tidyr,
+    readr,
+    knitr,
+    rmarkdown,
+    survival,
+    meta,
+    boot,
+    MASS,
+    DT,
+    plotly,
+    gt,
+    gtsummary
+Suggests:
+    testthat (>= 3.0.0),
+    quarto
+Config/testthat/edition: 3
