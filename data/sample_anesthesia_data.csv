@@ -1,0 +1,11 @@
+patient_id,age,gender,procedure_type,anesthesia_type,duration_minutes,personnel_cost,medication_cost,equipment_cost,total_cost,satisfaction_score,complications
+1,45,F,laparoscopy,general,120,300,45,25,370,92,0
+2,62,M,orthopedic,spinal,90,225,30,20,275,88,0
+3,38,F,cardiac,general,240,600,85,60,745,95,0
+4,55,M,abdominal,general,180,450,65,40,555,90,1
+5,29,F,minor_surgery,local,45,112.5,15,10,137.5,85,0
+6,71,M,vascular,general,200,500,75,50,625,87,0
+7,43,F,gynecologic,general,150,375,55,35,465,93,0
+8,58,M,urologic,spinal,100,250,35,25,310,89,0
+9,34,F,plastic,general,90,225,40,20,285,94,0
+10,66,M,thoracic,general,300,750,95,75,920,91,1
