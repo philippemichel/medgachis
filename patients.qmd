@@ -1,0 +1,113 @@
+---
+title: "patients"
+format: html
+---
+
+::: panel-tabset
+
+```{r}
+#| label: setup
+
+library(corrplot)
+library(baseph)
+library(ggsci)
+library(readODS)
+library(janitor)
+library(visdat)
+library(GGally)
+library(epiDisplay)
+library(emmeans)
+library(tidyverse)
+library(kableExtra)
+library(gtsummary)
+library(forestmodel)
+library(fmsb)
+library(labelled)
+#
+load("datas/medgachis.RData")
+
+classeur <- "medgachis.ods"
+expx <- FALSE
+if (expx) {
+  file.create(classeur)
+  file.remove(classeur)
+  write_ods(iris, classeur)
+}
+
+# sessionInfo()
+theme_gtsummary_language(language = "fr", decimal.mark = ",")
+theme_gtsummary_journal(journal = "jama")
+options(OutDec = ",")
+ptest <- list(all_continuous() ~ "t.test", all_categorical() ~ "chisq.test")
+ptest2 <- list(all_continuous() ~ "paired.t.test", all_categorical() ~ "chisq.test")
+stt <- list(
+  all_continuous() ~ "{mean} ({sd})",
+  all_categorical() ~ "{n}/{N} ({p}%)"
+)
+```
+
+
+# Qualité des données
+
+## Corrélations anormales
+
+```{r}
+#| label: cor-prep
+
+corx <- function(prof, titx) {
+  tit <- paste0("Corrélations ", titx)
+  prof |>
+    remove_constant() |>
+    mutate_if(is.factor, as.numeric) |>
+    dplyr::select(!formule_sys) |>
+    ggcorr(drop = TRUE, hjust = 0.9) +
+    labs(title = tit,
+         y = "n",
+         caption = "Corrélations. Validation interne du questionnaire.") +
+    theme_minimal() +
+    theme(
+      plot.title = element_text(size = 14, face = "bold"),
+      plot.subtitle = element_text(size = 12),
+      axis.title.x = element_blank(),
+      legend.title = element_blank(),
+      axis.title.y = element_blank(),
+      ,
+      axis.text.x = element_text(size = 12),
+      axis.text.y = element_text(size = 12),
+      legend.position = "right"
+    )
+}
+```
+
+```{r}
+#| label: fig-corregul
+#| fig-cap: Corrélations internes
+patients |>
+  corx("Patients")
+```
+
+Il n'y a apas de corrélation *anormale pouvant géner l'analyse.
+
+## Données manquantes
+
+```{r}
+#| label: fig-manq-apt
+#| fig-cap: Données manquantes (questionnaire patient)
+
+tt |>
+  dplyr::select(-c(!formule_sys)) |>
+  vis_dat(palette = "qual")
+```
+
+Aucune donnée manquante.
+
+# Description
+
+
+```{r}
+patients |>
+dplyr::select(-formule_sys) |>
+  tbl_summary(missing = "no")
+```
+
+:::

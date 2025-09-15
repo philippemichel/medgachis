@@ -1,0 +1,34 @@
+[
+  {
+    "objectID": "patients.html#corrélations-anormales",
+    "href": "patients.html#corrélations-anormales",
+    "title": "patients",
+    "section": "Corrélations anormales",
+    "text": "Corrélations anormales\n\n\nCode\ncorx &lt;- function(prof, titx) {\n  tit &lt;- paste0(\"Corrélations \", titx)\n  prof |&gt;\n    remove_constant() |&gt;\n    mutate_if(is.factor, as.numeric) |&gt;\n    dplyr::select(!formule_sys) |&gt;\n    ggcorr(drop = TRUE, hjust = 0.9) +\n    labs(title = tit,\n         y = \"n\",\n         caption = \"Corrélations. Validation interne du questionnaire.\") +\n    theme_minimal() +\n    theme(\n      plot.title = element_text(size = 14, face = \"bold\"),\n      plot.subtitle = element_text(size = 12),\n      axis.title.x = element_blank(),\n      legend.title = element_blank(),\n      axis.title.y = element_blank(),\n      ,\n      axis.text.x = element_text(size = 12),\n      axis.text.y = element_text(size = 12),\n      legend.position = \"right\"\n    )\n}\n\n\n\n\nCode\npatients |&gt;\n  corx(\"Patients\")\n\n\n\n\n\n\n\n\nFigure 1: Corrélations internes\n\n\n\n\n\nIl n’y a apas de corrélation *anormale pouvant géner l’analyse.",
+    "crumbs": [
+      "MedGachis",
+      "patients"
+    ]
+  },
+  {
+    "objectID": "patients.html#données-manquantes",
+    "href": "patients.html#données-manquantes",
+    "title": "patients",
+    "section": "Données manquantes",
+    "text": "Données manquantes\n\n\nCode\ntt |&gt;\n  dplyr::select(-c(!formule_sys)) |&gt;\n  vis_dat(palette = \"qual\")\n\n\n\n\n\n\n\n\nFigure 2: Données manquantes (questionnaire patient)\n\n\n\n\n\nAucune donnée manquante.",
+    "crumbs": [
+      "MedGachis",
+      "patients"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Introduction",
+    "section": "",
+    "text": "GénéralitésImport\n\n\n\nLes variables constantes & les variables vides ont été exclues de l’analyse.\n\n\n\n\n\nCode\nlibrary(\"tidyverse\")\nlibrary(\"readODS\")\nlibrary(\"janitor\")\nlibrary(\"labelled\")\nlibrary(\"baseph\")\n#\npatients &lt;- read_ods(\"./datas/patients.ods\", na = c(\"\", \" \", \"NA\")) |&gt;\n  clean_names() |&gt;\n  mutate(across(where(is.character), as.factor))\nbn &lt;- read_ods(\"./datas/patients.ods\",\n               sheet = \"bnom\",\n               na = c(\"\", \" \", \"NA\"))\nvar_label(patients) &lt;- bn$titres\npatients &lt;- remove_constant(patients)\n#\nbloc &lt;- read_ods(\"./datas/bloc.ods\", na = c(\"\", \" \", \"NA\")) |&gt;\n  clean_names() |&gt;\n  mutate(across(where(is.character), as.factor))\nbn &lt;- read_ods(\"./datas/bloc.ods\",\n               sheet = \"bnom\",\n               na = c(\"\", \" \", \"NA\"))\nvar_label(bloc) &lt;- bn$titres\nbloc &lt;- remove_constant(bloc)\n#\ntt &lt;- read_ods(\"./datas/traitement.ods\", na = c(\"\", \" \", \"NA\")) |&gt;\n  clean_names() |&gt;\n  mutate(across(where(is.character), as.factor))\nbn &lt;- read_ods(\"./datas/traitement.ods\",\n               sheet = \"bnom\",\n               na = c(\"\", \" \", \"NA\"))\nvar_label(tt) &lt;- bn$titres\ntt &lt;- remove_constant(tt)\n\n\nrm(bn)\nsave(patients, bloc, tt, file = \"datas/medgachis.RData\")\nload(\"datas/medgachis.RData\")",
+    "crumbs": [
+      "Introduction"
+    ]
+  }
+]

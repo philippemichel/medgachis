@@ -1,44 +1,47 @@
-title: "MEDGACHIS"
-subtitle: "Analyse statistique"
-date: today
-date-format: "DD MMMM YYYY"
+project:
+  type: website
+  output-dir: "docs"
 lang: fr
-language:
-  title-block-author-single: "Auteur"
-author:
-  - name: "D<sup>r</sup> Philippe MICHEL"
-    orcid: "0000-0003-2392-7186"
-    email: "philippe.michel@ght-novo.fr"
-    role: "Statisticien"
-    affiliations:
-      name: "USRC - Hôpital NOVO"
-      city: Pontoise
-title-block-banner: "#26474a"
-title-block-banner-color: white
+website:
+  title: "MedGachis"
+  search:
+    location: sidebar
+    type: textbox
+  page-footer:
+    left: "Copyright 2025, philippe MICHEL"
+    right:
+      - icon: github
+        href: https://github.com/philippemichel
+      - icon: twitter
+        href: https://twitter.com/PhiippeMICHEL
+      - icon: mailbox
+        text: mail
+        href: mailto:docphilmstat@gmail.com
+  sidebar:
+    style: "docked"
+    pinned: true
+    search: true
+    contents:
+      - section: "MedGachis"
+        contents:
+          - index.qmd
+          - patients.qmd
+          - bloc.qmd
+          - traitement.qmd
+  open-graph:
+    locale: fr_FR
+    site-name: MedGachis
 format:
   html:
-    appendix-style: default
-    embed-resources: true
-    theme: flatly
-    code-fold: true
-    code-line-numbers: true
-    html-math-method: katex
-    highlight-style: ayu
     page-layout: full
+    highlight-style: ayu
+    code-fold: true
+    theme:
+      light:
+        - sandstone
+      dark: cyborg
+    fontsize: 1.2em
     toc: true
-    number-sections: true
-    smooth-scroll: true
-    citation-hover: true
-bibliography: stat.bib
-csl: jama.csl
-license: "CC BY-SA"
-warning: false
-message: false
-cache: true
-website:
-  title: "MEDGACHIS"
-  sidebar:
-   style: "docked"
-   search: true
-   contents:
-     - contents: auto
+    warning: false
+    message: false
+    eval: true

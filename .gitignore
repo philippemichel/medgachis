@@ -35,3 +35,5 @@ po/*~
 rsconnect/
 datas
 doc
+
+/.quarto/
