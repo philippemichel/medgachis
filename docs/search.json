@@ -28,6 +28,7 @@
     "section": "",
     "text": "GénéralitésImport\n\n\n\nLes variables constantes & les variables vides ont été exclues de l’analyse.\n\n\n\n\n\nCode\nlibrary(\"tidyverse\")\nlibrary(\"readODS\")\nlibrary(\"janitor\")\nlibrary(\"labelled\")\nlibrary(\"baseph\")\n#\npatients &lt;- read_ods(\"./datas/patients.ods\", na = c(\"\", \" \", \"NA\")) |&gt;\n  clean_names() |&gt;\n  mutate(across(where(is.character), as.factor))\nbn &lt;- read_ods(\"./datas/patients.ods\",\n               sheet = \"bnom\",\n               na = c(\"\", \" \", \"NA\"))\nvar_label(patients) &lt;- bn$titres\npatients &lt;- remove_constant(patients)\n#\nbloc &lt;- read_ods(\"./datas/bloc.ods\", na = c(\"\", \" \", \"NA\")) |&gt;\n  clean_names() |&gt;\n  mutate(across(where(is.character), as.factor))\nbn &lt;- read_ods(\"./datas/bloc.ods\",\n               sheet = \"bnom\",\n               na = c(\"\", \" \", \"NA\"))\nvar_label(bloc) &lt;- bn$titres\nbloc &lt;- remove_constant(bloc)\n#\ntt &lt;- read_ods(\"./datas/traitement.ods\", na = c(\"\", \" \", \"NA\")) |&gt;\n  clean_names() |&gt;\n  mutate(across(where(is.character), as.factor))\nbn &lt;- read_ods(\"./datas/traitement.ods\",\n               sheet = \"bnom\",\n               na = c(\"\", \" \", \"NA\"))\nvar_label(tt) &lt;- bn$titres\ntt &lt;- remove_constant(tt)\n\n\nrm(bn)\nsave(patients, bloc, tt, file = \"datas/medgachis.RData\")\nload(\"datas/medgachis.RData\")",
     "crumbs": [
+      "MedGachis",
       "Introduction"
     ]
   }
