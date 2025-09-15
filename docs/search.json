@@ -4,7 +4,7 @@
     "href": "patients.html#corrélations-anormales",
     "title": "patients",
     "section": "Corrélations anormales",
-    "text": "Corrélations anormales\n\n\nCode\ncorx &lt;- function(prof, titx) {\n  tit &lt;- paste0(\"Corrélations \", titx)\n  prof |&gt;\n    remove_constant() |&gt;\n    mutate_if(is.factor, as.numeric) |&gt;\n    dplyr::select(!formule_sys) |&gt;\n    ggcorr(drop = TRUE, hjust = 0.9) +\n    labs(title = tit,\n         y = \"n\",\n         caption = \"Corrélations. Validation interne du questionnaire.\") +\n    theme_minimal() +\n    theme(\n      plot.title = element_text(size = 14, face = \"bold\"),\n      plot.subtitle = element_text(size = 12),\n      axis.title.x = element_blank(),\n      legend.title = element_blank(),\n      axis.title.y = element_blank(),\n      ,\n      axis.text.x = element_text(size = 12),\n      axis.text.y = element_text(size = 12),\n      legend.position = \"right\"\n    )\n}\n\n\n\n\nCode\npatients |&gt;\n  corx(\"Patients\")\n\n\n\n\n\n\n\n\nFigure 1: Corrélations internes\n\n\n\n\n\nIl n’y a apas de corrélation *anormale pouvant géner l’analyse.",
+    "text": "Corrélations anormales\n\n\nCode\ncorx &lt;- function(prof, titx) {\n  tit &lt;- paste0(\"Corrélations \", titx)\n  prof |&gt;\n    remove_constant() |&gt;\n    mutate_if(is.factor, as.numeric) |&gt;\n    dplyr::select(!formule_sys) |&gt;\n    ggcorr(drop = TRUE, hjust = 0.9) +\n    labs(title = tit,\n         y = \"n\",\n         caption = \"Corrélations. Validation interne du questionnaire.\") +\n    theme_minimal() +\n    theme(\n      plot.title = element_text(size = 14, face = \"bold\"),\n      plot.subtitle = element_text(size = 12),\n      axis.title.x = element_blank(),\n      legend.title = element_blank(),\n      axis.title.y = element_blank(),\n      ,\n      axis.text.x = element_text(size = 12),\n      axis.text.y = element_text(size = 12),\n      legend.position = \"right\"\n    )\n}\n\n\n\n\nCode\npatients |&gt;\n  corx(\"Patients\")\n\n\n\n\n\n\n\n\nFigure 1: Corrélations internes\n\n\n\n\n\nIl n’y a pas de corrélation anormale pouvant gêner l’analyse.",
     "crumbs": [
       "MedGachis",
       "patients"
@@ -26,10 +26,32 @@
     "href": "index.html",
     "title": "Introduction",
     "section": "",
-    "text": "GénéralitésImport\n\n\n\nLes variables constantes & les variables vides ont été exclues de l’analyse.\n\n\n\n\n\nCode\nlibrary(\"tidyverse\")\nlibrary(\"readODS\")\nlibrary(\"janitor\")\nlibrary(\"labelled\")\nlibrary(\"baseph\")\n#\npatients &lt;- read_ods(\"./datas/patients.ods\", na = c(\"\", \" \", \"NA\")) |&gt;\n  clean_names() |&gt;\n  mutate(across(where(is.character), as.factor))\nbn &lt;- read_ods(\"./datas/patients.ods\",\n               sheet = \"bnom\",\n               na = c(\"\", \" \", \"NA\"))\nvar_label(patients) &lt;- bn$titres\npatients &lt;- remove_constant(patients)\n#\nbloc &lt;- read_ods(\"./datas/bloc.ods\", na = c(\"\", \" \", \"NA\")) |&gt;\n  clean_names() |&gt;\n  mutate(across(where(is.character), as.factor))\nbn &lt;- read_ods(\"./datas/bloc.ods\",\n               sheet = \"bnom\",\n               na = c(\"\", \" \", \"NA\"))\nvar_label(bloc) &lt;- bn$titres\nbloc &lt;- remove_constant(bloc)\n#\ntt &lt;- read_ods(\"./datas/traitement.ods\", na = c(\"\", \" \", \"NA\")) |&gt;\n  clean_names() |&gt;\n  mutate(across(where(is.character), as.factor))\nbn &lt;- read_ods(\"./datas/traitement.ods\",\n               sheet = \"bnom\",\n               na = c(\"\", \" \", \"NA\"))\nvar_label(tt) &lt;- bn$titres\ntt &lt;- remove_constant(tt)\n\n\nrm(bn)\nsave(patients, bloc, tt, file = \"datas/medgachis.RData\")\nload(\"datas/medgachis.RData\")",
+    "text": "GénéralitésImport\n\n\n\nLes variables constantes & les variables vides ont été exclues de l’analyse.\nDans les tableaux, pour les variables en Oui/Non, seules les valeurs pour le Oui sont indiquées.\n\n\n\n\n\nCode\nlibrary(\"tidyverse\")\nlibrary(\"readODS\")\nlibrary(\"janitor\")\nlibrary(\"labelled\")\nlibrary(\"baseph\")\n#\nnax &lt;- c(\"\", \" \", \"NA\",\"D\")\n\npatients &lt;- read_ods(\"./datas/patients.ods\", na = nax) |&gt;\n  clean_names() |&gt;\n  mutate(across(where(is.character), as.factor))\nbn &lt;- read_ods(\"./datas/patients.ods\", sheet = \"bnom\", na = nax)\nvar_label(patients) &lt;- bn$titres\npatients &lt;- patients |&gt;\n  remove_constant(na.rm = TRUE) |&gt; \n  mutate(d_inter =  as.numeric(patients$heure_extubation - patients$heure_anesthesie)/60) |&gt; \n  dplyr::select(-starts_with(\"heure\")) \nvar_label(patients$d_inter) &lt;- \"Durée intervention (min)\"\n\n#\nbloc &lt;- read_ods(\"./datas/bloc.ods\", na = nax) |&gt;\n  clean_names() |&gt;\n  mutate(across(where(is.character), as.factor))\nbn &lt;- read_ods(\"./datas/bloc.ods\", sheet = \"bnom\", na =  nax)\nvar_label(bloc) &lt;- bn$titres\nbloc &lt;- remove_constant(bloc, na.rm = TRUE)\n#\ntt &lt;- read_ods(\"./datas/traitement.ods\", na = nax) |&gt;\n  clean_names() |&gt;\n  mutate(across(where(is.character), as.factor))\nbn &lt;- read_ods(\"./datas/traitement.ods\", sheet = \"bnom\", na = nax)\nvar_label(tt) &lt;- bn$titres\ntt &lt;- remove_constant(tt, na.rm = TRUE)\n\n\nrm(bn)\nsave(patients, bloc, tt, file = \"datas/medgachis.RData\")\nload(\"datas/medgachis.RData\")",
     "crumbs": [
       "MedGachis",
       "Introduction"
+    ]
+  },
+  {
+    "objectID": "bloc.html#corrélations-anormales",
+    "href": "bloc.html#corrélations-anormales",
+    "title": "Bloc",
+    "section": "Corrélations anormales",
+    "text": "Corrélations anormales\n\n\nCode\ncorx &lt;- function(prof, titx) {\n  tit &lt;- paste0(\"Corrélations \", titx)\n  prof |&gt;\n    remove_constant() |&gt;\n    mutate_if(is.factor, as.numeric) |&gt;\n    dplyr::select(!code_iade) |&gt;\n    ggcorr(drop = TRUE, hjust = 0.9) +\n    labs(title = tit,\n         y = \"n\",\n         caption = \"Corrélations. Validation interne du questionnaire.\") +\n    theme_minimal() +\n    theme(\n      plot.title = element_text(size = 14, face = \"bold\"),\n      plot.subtitle = element_text(size = 12),\n      axis.title.x = element_blank(),\n      legend.title = element_blank(),\n      axis.title.y = element_blank(),\n      ,\n      axis.text.x = element_text(size = 12),\n      axis.text.y = element_text(size = 12),\n      legend.position = \"right\"\n    )\n}\n\n\n\n\nCode\nbloc |&gt;\n  corx(\"Bloc\")\n\n\n\n\n\n\n\n\nFigure 1: Corrélations internes\n\n\n\n\n\nIl n’y a pas de corrélation anormale pouvant gêner l’analyse.",
+    "crumbs": [
+      "MedGachis",
+      "Bloc"
+    ]
+  },
+  {
+    "objectID": "bloc.html#données-manquantes",
+    "href": "bloc.html#données-manquantes",
+    "title": "Bloc",
+    "section": "Données manquantes",
+    "text": "Données manquantes\n\n\nCode\n bloc |&gt;\n  dplyr::select(-c(!code_iade)) |&gt;\n  vis_dat(palette = \"qual\")\n\n\n\n\n\n\n\n\nFigure 2: Données manquantes (questionnaire bloc)\n\n\n\n\n\nAucune donnée manquante.",
+    "crumbs": [
+      "MedGachis",
+      "Bloc"
     ]
   }
 ]

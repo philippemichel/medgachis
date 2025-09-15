@@ -1,5 +1,5 @@
 ---
-title: "patients"
+title: "Bloc"
 format: html
 ---
 
@@ -59,7 +59,7 @@ corx <- function(prof, titx) {
   prof |>
     remove_constant() |>
     mutate_if(is.factor, as.numeric) |>
-    dplyr::select(!formule_sys) |>
+    dplyr::select(!code_iade) |>
     ggcorr(drop = TRUE, hjust = 0.9) +
     labs(title = tit,
          y = "n",
@@ -82,8 +82,9 @@ corx <- function(prof, titx) {
 ```{r}
 #| label: fig-corregul
 #| fig-cap: Corrélations internes
-patients |>
-  corx("Patients")
+
+bloc |>
+  corx("Bloc")
 ```
 
 Il n'y a pas de corrélation *anormale* pouvant gêner l'analyse.
@@ -92,10 +93,10 @@ Il n'y a pas de corrélation *anormale* pouvant gêner l'analyse.
 
 ```{r}
 #| label: fig-manq-apt
-#| fig-cap: Données manquantes (questionnaire patient)
+#| fig-cap: Données manquantes (questionnaire bloc)
 
-tt |>
-  dplyr::select(-c(!formule_sys)) |>
+ bloc |>
+  dplyr::select(-c(!code_iade)) |>
   vis_dat(palette = "qual")
 ```
 
@@ -106,20 +107,16 @@ Aucune donnée manquante.
 
 ```{r}
 #| label: tbl-desc
-#| tbl-cap: Description des patients
+#| tbl-cap: Description --Bloc
 
-patients |>
-dplyr::select(-formule_sys) |>
+bloc |>
+dplyr::select(-code_iade) |>
   tbl_summary(missing = "no",
               type = all_continuous() ~ "continuous2",
                statistic = all_continuous() ~ c(
       "{mean} ± {sd}",
-      "{min}, {max}"),
-              value = list(geste_en_urgence = "Oui",
-                                            alr_ou_al = "Oui",
-                                            ag_ou_sedation = "Oui",
-                                            oxygenation_ventilation = "Oui",
-                                            extubation_salle_op = "Oui")) |> 
+      "{min}, {max}")
+             ) |> 
                
 
   add_n() |> 
@@ -130,34 +127,6 @@ dplyr::select(-formule_sys) |>
    scroll_box(width = "100%", height = "80%")
 ```
 
-```{r}
-#| label: fig-pyr
-#| fig-cap: Pyramide des âges
 
-pyramid(patients$age, patients$sexe, col.gender = c("pink", "lightblue"), main = "Pyramide des âges", binwidth = 10)
-```
-
-```{r}
-#| label: fig-type
-#| fig-cap: Type de chirurgie
-
-patients |> 
-ggplot(aes(x = fct_infreq(type_chirurgie), fill = type_chirurgie)) +
-  geom_bar() +
-  theme(legend.position = "none") +
-  labs(title = "Type de chirurgie",
-       y = "n",
-       x = "") +
-    theme_light() +
-    theme(
-      plot.title = element_text(size = 18, face = "bold"),
-      plot.subtitle = element_text(size = 12),
-      axis.title.x = element_blank(),
-      axis.title.y = element_text(size = 12),
-      axis.text.x = element_text(size = 12, angle = 40, hjust = 1),
-      axis.text.y = element_text(size = 12),
-      legend.position = "none"
-    )
-```
 
 :::

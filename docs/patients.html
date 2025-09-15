@@ -6,6 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Dr Philippe MICHEL">
 
 <title>patients – MedGachis</title>
 <style>
@@ -104,10 +105,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Recherche"
   }
 }</script>
+<script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 
 
 <meta property="og:title" content="patients – MedGachis">
-<meta property="og:image" content="patients_files/figure-html/fig-corregul-1.png">
+<meta property="og:image" content="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
 <meta property="og:site_name" content="MedGachis">
 <meta property="og:locale" content="fr_FR">
 </head>
@@ -333,8 +336,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
           <li class="sidebar-item">
- <span class="menu-text">bloc.qmd</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="./bloc.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bloc</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
  <span class="menu-text">traitement.qmd</span>
   </li>
@@ -358,10 +364,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 
 
+<div class="quarto-title-meta-author column-page-right">
+  <div class="quarto-title-meta-heading">Auteur</div>
+  <div class="quarto-title-meta-heading">Affiliation</div>
+  
+    <div class="quarto-title-meta-contents">
+    <p class="author">D<sup>r</sup> Philippe MICHEL <a href="mailto:philippe.michel@ght-novo.fr" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> <a href="https://orcid.org/0000-0003-2392-7186" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+  </div>
+  <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            Hôpital NOVO
+          </p>
+      </div>
+  </div>
 
 <div class="quarto-title-meta column-page-right">
 
-    
+      
   
     
   </div>
@@ -424,7 +443,7 @@ Figure&nbsp;1: Corrélations internes
 </div>
 </div>
 </div>
-<p>Il n’y a apas de corrélation *anormale pouvant géner l’analyse.</p>
+<p>Il n’y a pas de corrélation <em>anormale</em> pouvant gêner l’analyse.</p>
 </section>
 <section id="données-manquantes" class="level2">
 <h2 class="anchored" data-anchor-id="données-manquantes">Données manquantes</h2>
@@ -457,1284 +476,609 @@ Figure&nbsp;2: Données manquantes (questionnaire patient)
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>patients <span class="sc">|&gt;</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span>formule_sys) <span class="sc">|&gt;</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tbl_summary</span>(<span class="at">missing =</span> <span class="st">"no"</span>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tbl_summary</span>(<span class="at">missing =</span> <span class="st">"no"</span>,</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">type =</span> <span class="fu">all_continuous</span>() <span class="sc">~</span> <span class="st">"continuous2"</span>,</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">statistic =</span> <span class="fu">all_continuous</span>() <span class="sc">~</span> <span class="fu">c</span>(</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>      <span class="st">"{mean} ± {sd}"</span>,</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>      <span class="st">"{min}, {max}"</span>),</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>              <span class="at">value =</span> <span class="fu">list</span>(<span class="at">geste_en_urgence =</span> <span class="st">"Oui"</span>,</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>                                            <span class="at">alr_ou_al =</span> <span class="st">"Oui"</span>,</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>                                            <span class="at">ag_ou_sedation =</span> <span class="st">"Oui"</span>,</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>                                            <span class="at">oxygenation_ventilation =</span> <span class="st">"Oui"</span>,</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>                                            <span class="at">extubation_salle_op =</span> <span class="st">"Oui"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>               </span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_n</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bold_labels</span>() <span class="sc">|&gt;</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">modify_header</span>(label <span class="sc">~</span> <span class="st">" "</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_kable_extra</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>   <span class="fu">kable_material</span>(<span class="fu">c</span>(<span class="st">"striped"</span>, <span class="st">"hover"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>   <span class="fu">scroll_box</span>(<span class="at">width =</span> <span class="st">"100%"</span>, <span class="at">height =</span> <span class="st">"80%"</span>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
+<div id="tbl-desc" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-desc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: Description des patients
+</figcaption>
+<div aria-describedby="tbl-desc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="qfatgyeprw" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#qfatgyeprw table {
-  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-#qfatgyeprw thead, #qfatgyeprw tbody, #qfatgyeprw tfoot, #qfatgyeprw tr, #qfatgyeprw td, #qfatgyeprw th {
-  border-style: none;
-}
-
-#qfatgyeprw p {
-  margin: 0;
-  padding: 0;
-}
-
-#qfatgyeprw .gt_table {
-  display: table;
-  border-collapse: collapse;
-  line-height: normal;
-  margin-left: auto;
-  margin-right: auto;
-  color: #333333;
-  font-size: 16px;
-  font-weight: normal;
-  font-style: normal;
-  background-color: #FFFFFF;
-  width: auto;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #A8A8A8;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #A8A8A8;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-}
-
-#qfatgyeprw .gt_caption {
-  padding-top: 4px;
-  padding-bottom: 4px;
-}
-
-#qfatgyeprw .gt_title {
-  color: #333333;
-  font-size: 125%;
-  font-weight: initial;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-color: #FFFFFF;
-  border-bottom-width: 0;
-}
-
-#qfatgyeprw .gt_subtitle {
-  color: #333333;
-  font-size: 85%;
-  font-weight: initial;
-  padding-top: 3px;
-  padding-bottom: 5px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-color: #FFFFFF;
-  border-top-width: 0;
-}
-
-#qfatgyeprw .gt_heading {
-  background-color: #FFFFFF;
-  text-align: center;
-  border-bottom-color: #FFFFFF;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#qfatgyeprw .gt_bottom_border {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#qfatgyeprw .gt_col_headings {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#qfatgyeprw .gt_col_heading {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 6px;
-  padding-left: 5px;
-  padding-right: 5px;
-  overflow-x: hidden;
-}
-
-#qfatgyeprw .gt_column_spanner_outer {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  padding-top: 0;
-  padding-bottom: 0;
-  padding-left: 4px;
-  padding-right: 4px;
-}
-
-#qfatgyeprw .gt_column_spanner_outer:first-child {
-  padding-left: 0;
-}
-
-#qfatgyeprw .gt_column_spanner_outer:last-child {
-  padding-right: 0;
-}
-
-#qfatgyeprw .gt_column_spanner {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  overflow-x: hidden;
-  display: inline-block;
-  width: 100%;
-}
-
-#qfatgyeprw .gt_spanner_row {
-  border-bottom-style: hidden;
-}
-
-#qfatgyeprw .gt_group_heading {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  text-align: left;
-}
-
-#qfatgyeprw .gt_empty_group_heading {
-  padding: 0.5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: middle;
-}
-
-#qfatgyeprw .gt_from_md > :first-child {
-  margin-top: 0;
-}
-
-#qfatgyeprw .gt_from_md > :last-child {
-  margin-bottom: 0;
-}
-
-#qfatgyeprw .gt_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  margin: 10px;
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  overflow-x: hidden;
-}
-
-#qfatgyeprw .gt_stub {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#qfatgyeprw .gt_stub_row_group {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-  vertical-align: top;
-}
-
-#qfatgyeprw .gt_row_group_first td {
-  border-top-width: 2px;
-}
-
-#qfatgyeprw .gt_row_group_first th {
-  border-top-width: 2px;
-}
-
-#qfatgyeprw .gt_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#qfatgyeprw .gt_first_summary_row {
-  border-top-style: solid;
-  border-top-color: #D3D3D3;
-}
-
-#qfatgyeprw .gt_first_summary_row.thick {
-  border-top-width: 2px;
-}
-
-#qfatgyeprw .gt_last_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#qfatgyeprw .gt_grand_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#qfatgyeprw .gt_first_grand_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-style: double;
-  border-top-width: 6px;
-  border-top-color: #D3D3D3;
-}
-
-#qfatgyeprw .gt_last_grand_summary_row_top {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: double;
-  border-bottom-width: 6px;
-  border-bottom-color: #D3D3D3;
-}
-
-#qfatgyeprw .gt_striped {
-  background-color: rgba(128, 128, 128, 0.05);
-}
-
-#qfatgyeprw .gt_table_body {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#qfatgyeprw .gt_footnotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#qfatgyeprw .gt_footnote {
-  margin: 0px;
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#qfatgyeprw .gt_sourcenotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#qfatgyeprw .gt_sourcenote {
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#qfatgyeprw .gt_left {
-  text-align: left;
-}
-
-#qfatgyeprw .gt_center {
-  text-align: center;
-}
-
-#qfatgyeprw .gt_right {
-  text-align: right;
-  font-variant-numeric: tabular-nums;
-}
-
-#qfatgyeprw .gt_font_normal {
-  font-weight: normal;
-}
-
-#qfatgyeprw .gt_font_bold {
-  font-weight: bold;
-}
-
-#qfatgyeprw .gt_font_italic {
-  font-style: italic;
-}
-
-#qfatgyeprw .gt_super {
-  font-size: 65%;
-}
-
-#qfatgyeprw .gt_footnote_marks {
-  font-size: 75%;
-  vertical-align: 0.4em;
-  position: initial;
-}
-
-#qfatgyeprw .gt_asterisk {
-  font-size: 100%;
-  vertical-align: 0;
-}
-
-#qfatgyeprw .gt_indent_1 {
-  text-indent: 5px;
-}
-
-#qfatgyeprw .gt_indent_2 {
-  text-indent: 10px;
-}
-
-#qfatgyeprw .gt_indent_3 {
-  text-indent: 15px;
-}
-
-#qfatgyeprw .gt_indent_4 {
-  text-indent: 20px;
-}
-
-#qfatgyeprw .gt_indent_5 {
-  text-indent: 25px;
-}
-
-#qfatgyeprw .katex-display {
-  display: inline-flex !important;
-  margin-bottom: 0.75em !important;
-}
-
-#qfatgyeprw div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
-  height: 0px !important;
-}
-</style>
-
-<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:80%; overflow-x: scroll; width:100%; ">
+<table class="lightable-material lightable-striped lightable-hover do-not-create-environment cell caption-top table table-sm table-striped small" data-quarto-postprocess="true">
 <thead>
-<tr class="gt_col_headings header">
-<th id="label" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col"><strong>Caractéristique</strong></th>
-<th id="stat_0" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><strong>N = 57</strong></th>
+<tr class="header">
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;"></th>
+<th data-quarto-table-cell-role="th" style="text-align: center; position: sticky; top: 0; background-color: #FFFFFF;">N</th>
+<th data-quarto-table-cell-role="th" style="text-align: center; position: sticky; top: 0; background-color: #FFFFFF;">N = 57</th>
 </tr>
 </thead>
-<tbody class="gt_table_body">
+<tbody>
 <tr class="odd">
-<td class="gt_row gt_left" headers="label">Age, Médiane (IQR)</td>
-<td class="gt_row gt_center" headers="stat_0">53 (33 – 73)</td>
+<td style="text-align: left;"><span style=" font-weight: bold;    ">Age</span></td>
+<td style="text-align: center;">57</td>
+<td style="text-align: center;"></td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="label">Sexe, n (%)</td>
-<td class="gt_row gt_center" headers="stat_0"><br>
-</td>
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">Moyenne ± ET</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">50 ± 26</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Femme</td>
-<td class="gt_row gt_center" headers="stat_0">35 (61)</td>
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">Min, Max</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">2, 91</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Homme</td>
-<td class="gt_row gt_center" headers="stat_0">22 (39)</td>
+<td style="text-align: left;"><span style=" font-weight: bold;    ">Sexe, n (%)</span></td>
+<td style="text-align: center;">57</td>
+<td style="text-align: center;"></td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="label">Poids, n (%)</td>
-<td class="gt_row gt_center" headers="stat_0"><br>
-</td>
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">Femme</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">35 (61)</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;100</td>
-<td class="gt_row gt_center" headers="stat_0">2 (3.6)</td>
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">Homme</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">22 (39)</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;107</td>
-<td class="gt_row gt_center" headers="stat_0">1 (1.8)</td>
+<td style="text-align: left;"><span style=" font-weight: bold;    ">Poids</span></td>
+<td style="text-align: center;">55</td>
+<td style="text-align: center;"></td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;109</td>
-<td class="gt_row gt_center" headers="stat_0">1 (1.8)</td>
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">Moyenne ± ET</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">67 ± 25</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;110</td>
-<td class="gt_row gt_center" headers="stat_0">1 (1.8)</td>
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">Min, Max</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">9, 115</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;115</td>
-<td class="gt_row gt_center" headers="stat_0">2 (3.6)</td>
+<td style="text-align: left;"><span style=" font-weight: bold;    ">Taille</span></td>
+<td style="text-align: center;">55</td>
+<td style="text-align: center;"></td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;15</td>
-<td class="gt_row gt_center" headers="stat_0">1 (1.8)</td>
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">Moyenne ± ET</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">159 ± 22</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;19</td>
-<td class="gt_row gt_center" headers="stat_0">1 (1.8)</td>
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">Min, Max</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">79, 191</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;24</td>
-<td class="gt_row gt_center" headers="stat_0">1 (1.8)</td>
+<td style="text-align: left;"><span style=" font-weight: bold;    ">BMI</span></td>
+<td style="text-align: center;">55</td>
+<td style="text-align: center;"></td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;28</td>
-<td class="gt_row gt_center" headers="stat_0">1 (1.8)</td>
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">Moyenne ± ET</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">25 ± 7</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;29</td>
-<td class="gt_row gt_center" headers="stat_0">1 (1.8)</td>
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">Min, Max</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">14, 46</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;34</td>
-<td class="gt_row gt_center" headers="stat_0">1 (1.8)</td>
+<td style="text-align: left;"><span style=" font-weight: bold;    ">ASA, n (%)</span></td>
+<td style="text-align: center;">56</td>
+<td style="text-align: center;"></td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;42</td>
-<td class="gt_row gt_center" headers="stat_0">1 (1.8)</td>
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">1</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">22 (39)</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;46</td>
-<td class="gt_row gt_center" headers="stat_0">1 (1.8)</td>
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">2</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">19 (34)</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;50</td>
-<td class="gt_row gt_center" headers="stat_0">3 (5.4)</td>
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">3</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">15 (27)</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;52</td>
-<td class="gt_row gt_center" headers="stat_0">1 (1.8)</td>
+<td style="text-align: left;"><span style=" font-weight: bold;    ">Geste en urgence, n (%)</span></td>
+<td style="text-align: center;">57</td>
+<td style="text-align: center;">6 (11)</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;53</td>
-<td class="gt_row gt_center" headers="stat_0">2 (3.6)</td>
+<td style="text-align: left;"><span style=" font-weight: bold;    ">Type chirurgie, n (%)</span></td>
+<td style="text-align: center;">57</td>
+<td style="text-align: center;"></td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;56</td>
-<td class="gt_row gt_center" headers="stat_0">1 (1.8)</td>
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">Accès veineux central</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">4 (7.0)</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;57</td>
-<td class="gt_row gt_center" headers="stat_0">2 (3.6)</td>
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">Endoscopie digestive</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">5 (8.8)</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;60</td>
-<td class="gt_row gt_center" headers="stat_0">1 (1.8)</td>
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">Gynécologie</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">8 (14)</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;61</td>
-<td class="gt_row gt_center" headers="stat_0">1 (1.8)</td>
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">Obstétricale</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">1 (1.8)</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;62</td>
-<td class="gt_row gt_center" headers="stat_0">1 (1.8)</td>
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">Ophtalmologie</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">5 (8.8)</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;64</td>
-<td class="gt_row gt_center" headers="stat_0">1 (1.8)</td>
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">ORL</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">11 (19)</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;65</td>
-<td class="gt_row gt_center" headers="stat_0">2 (3.6)</td>
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">Orthopédie</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">1 (1.8)</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;66</td>
-<td class="gt_row gt_center" headers="stat_0">2 (3.6)</td>
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">Radiologie interventionnelle sauf tête</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">2 (3.5)</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;67</td>
-<td class="gt_row gt_center" headers="stat_0">3 (5.4)</td>
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">Thoracique</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">2 (3.5)</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;69</td>
-<td class="gt_row gt_center" headers="stat_0">2 (3.6)</td>
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">Tissus mous, Plastique</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">5 (8.8)</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;70</td>
-<td class="gt_row gt_center" headers="stat_0">4 (7.1)</td>
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">Urologie</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">3 (5.3)</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;71</td>
-<td class="gt_row gt_center" headers="stat_0">1 (1.8)</td>
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">Vasculaire</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">3 (5.3)</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;72</td>
-<td class="gt_row gt_center" headers="stat_0">2 (3.6)</td>
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">Viscérale</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">7 (12)</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;75</td>
-<td class="gt_row gt_center" headers="stat_0">3 (5.4)</td>
+<td style="text-align: left;"><span style=" font-weight: bold;    ">Type anesthésie, n (%)</span></td>
+<td style="text-align: center;">57</td>
+<td style="text-align: center;"></td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;80</td>
-<td class="gt_row gt_center" headers="stat_0">1 (1.8)</td>
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">AG</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">41 (72)</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;82</td>
-<td class="gt_row gt_center" headers="stat_0">1 (1.8)</td>
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">ALR et AG programmée</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">3 (5.3)</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;9</td>
-<td class="gt_row gt_center" headers="stat_0">1 (1.8)</td>
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">ALR seule</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">13 (23)</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;92</td>
-<td class="gt_row gt_center" headers="stat_0">1 (1.8)</td>
+<td style="text-align: left;"><span style=" font-weight: bold;    ">VVP, n (%)</span></td>
+<td style="text-align: center;">57</td>
+<td style="text-align: center;"></td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;94</td>
-<td class="gt_row gt_center" headers="stat_0">1 (1.8)</td>
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">Accès veineux préexistant</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">4 (7.0)</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;95</td>
-<td class="gt_row gt_center" headers="stat_0">1 (1.8)</td>
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">Non</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">4 (7.0)</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;97</td>
-<td class="gt_row gt_center" headers="stat_0">1 (1.8)</td>
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">Oui</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">42 (74)</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;98</td>
-<td class="gt_row gt_center" headers="stat_0">1 (1.8)</td>
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">Oui après induction inhalée</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">7 (12)</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;D</td>
-<td class="gt_row gt_center" headers="stat_0">1 (1.8)</td>
+<td style="text-align: left;"><span style=" font-weight: bold;    ">ALR ou AL, n (%)</span></td>
+<td style="text-align: center;">57</td>
+<td style="text-align: center;">16 (28)</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="label">Taille, n (%)</td>
-<td class="gt_row gt_center" headers="stat_0"><br>
-</td>
+<td style="text-align: left;"><span style=" font-weight: bold;    ">TYPE ALR, n (%)</span></td>
+<td style="text-align: center;">16</td>
+<td style="text-align: center;"></td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;102</td>
-<td class="gt_row gt_center" headers="stat_0">1 (1.8)</td>
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">Locale</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">11 (69)</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;103</td>
-<td class="gt_row gt_center" headers="stat_0">1 (1.8)</td>
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">Péridurale</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">2 (13)</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;110</td>
-<td class="gt_row gt_center" headers="stat_0">1 (1.8)</td>
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">Rachis anesthésie</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">2 (13)</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;120</td>
-<td class="gt_row gt_center" headers="stat_0">1 (1.8)</td>
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">Tronculaire</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">1 (6.3)</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;127</td>
-<td class="gt_row gt_center" headers="stat_0">1 (1.8)</td>
+<td style="text-align: left;"><span style=" font-weight: bold;    ">ALR réalisée, n (%)</span></td>
+<td style="text-align: center;">16</td>
+<td style="text-align: center;"></td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;142</td>
-<td class="gt_row gt_center" headers="stat_0">1 (1.8)</td>
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">Patient réveillé</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">15 (94)</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;145</td>
-<td class="gt_row gt_center" headers="stat_0">1 (1.8)</td>
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">Sous sédation (AG)</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">1 (6.3)</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;147</td>
-<td class="gt_row gt_center" headers="stat_0">2 (3.6)</td>
+<td style="text-align: left;"><span style=" font-weight: bold;    ">Débit O2 ALR, n (%)</span></td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;"></td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;150</td>
-<td class="gt_row gt_center" headers="stat_0">2 (3.6)</td>
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">0</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">1 (20)</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;152</td>
-<td class="gt_row gt_center" headers="stat_0">1 (1.8)</td>
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">4</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">2 (40)</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;155</td>
-<td class="gt_row gt_center" headers="stat_0">2 (3.6)</td>
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">6</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">2 (40)</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;157</td>
-<td class="gt_row gt_center" headers="stat_0">2 (3.6)</td>
+<td style="text-align: left;"><span style=" font-weight: bold;    ">AG ou sédation, n (%)</span></td>
+<td style="text-align: center;">57</td>
+<td style="text-align: center;">52 (91)</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;158</td>
-<td class="gt_row gt_center" headers="stat_0">1 (1.8)</td>
+<td style="text-align: left;"><span style=" font-weight: bold;    ">Pré-oxygénation, n (%)</span></td>
+<td style="text-align: center;">40</td>
+<td style="text-align: center;"></td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;159</td>
-<td class="gt_row gt_center" headers="stat_0">2 (3.6)</td>
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">AI et/ou PEP</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">2 (5.0)</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;160</td>
-<td class="gt_row gt_center" headers="stat_0">2 (3.6)</td>
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">Lunettes ou masque simple à oxygène</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">8 (20)</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;161</td>
-<td class="gt_row gt_center" headers="stat_0">1 (1.8)</td>
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">VS Masque facial (AI=0, PEP=0)</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">30 (75)</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;162</td>
-<td class="gt_row gt_center" headers="stat_0">1 (1.8)</td>
+<td style="text-align: left;"><span style=" font-weight: bold;    ">Induction hypnotique, n (%)</span></td>
+<td style="text-align: center;">52</td>
+<td style="text-align: center;"></td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;163</td>
-<td class="gt_row gt_center" headers="stat_0">2 (3.6)</td>
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">Inhalée sans N20</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">7 (13)</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;165</td>
-<td class="gt_row gt_center" headers="stat_0">6 (11)</td>
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">Intra-veineuse</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">45 (87)</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;167</td>
-<td class="gt_row gt_center" headers="stat_0">3 (5.4)</td>
+<td style="text-align: left;"><span style=" font-weight: bold;    ">Entretien hypnotique, n (%)</span></td>
+<td style="text-align: center;">47</td>
+<td style="text-align: center;"></td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;168</td>
-<td class="gt_row gt_center" headers="stat_0">1 (1.8)</td>
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">Inhalée</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">34 (72)</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;170</td>
-<td class="gt_row gt_center" headers="stat_0">3 (5.4)</td>
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">Intra-veineuse</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">13 (28)</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;171</td>
-<td class="gt_row gt_center" headers="stat_0">2 (3.6)</td>
+<td style="text-align: left;"><span style=" font-weight: bold;    ">Réglage débit gaz frais, n (%)</span></td>
+<td style="text-align: center;">34</td>
+<td style="text-align: center;"></td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;172</td>
-<td class="gt_row gt_center" headers="stat_0">1 (1.8)</td>
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">Automatique (AINOC)</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">3 (8.8)</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;173</td>
-<td class="gt_row gt_center" headers="stat_0">1 (1.8)</td>
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">Manuel</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">31 (91)</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;175</td>
-<td class="gt_row gt_center" headers="stat_0">3 (5.4)</td>
+<td style="text-align: left;"><span style=" font-weight: bold;    ">DGF</span></td>
+<td style="text-align: center;">34</td>
+<td style="text-align: center;"></td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;176</td>
-<td class="gt_row gt_center" headers="stat_0">1 (1.8)</td>
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">Moyenne ± ET</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">1.44 ± 2.43</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;178</td>
-<td class="gt_row gt_center" headers="stat_0">1 (1.8)</td>
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">Min, Max</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">0.00, 15.00</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;179</td>
-<td class="gt_row gt_center" headers="stat_0">1 (1.8)</td>
+<td style="text-align: left;"><span style=" font-weight: bold;    ">Administration morphiniques, n (%)</span></td>
+<td style="text-align: center;">42</td>
+<td style="text-align: center;"></td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;180</td>
-<td class="gt_row gt_center" headers="stat_0">1 (1.8)</td>
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">IV bolus</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">38 (90)</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;181</td>
-<td class="gt_row gt_center" headers="stat_0">1 (1.8)</td>
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">IV bolus + continue</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">2 (4.8)</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;184</td>
-<td class="gt_row gt_center" headers="stat_0">1 (1.8)</td>
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">IV continue</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">2 (4.8)</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;185</td>
-<td class="gt_row gt_center" headers="stat_0">1 (1.8)</td>
+<td style="text-align: left;"><span style=" font-weight: bold;    ">Oxygénation/ventilation, n (%)</span></td>
+<td style="text-align: center;">57</td>
+<td style="text-align: center;">51 (89)</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;191</td>
-<td class="gt_row gt_center" headers="stat_0">2 (3.6)</td>
+<td style="text-align: left;"><span style=" font-weight: bold;    ">Interface voies aériennes, n (%)</span></td>
+<td style="text-align: center;">51</td>
+<td style="text-align: center;"></td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;79</td>
-<td class="gt_row gt_center" headers="stat_0">1 (1.8)</td>
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">Dispositif supra-glottique</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">10 (20)</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;D</td>
-<td class="gt_row gt_center" headers="stat_0">1 (1.8)</td>
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">Lunettes</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">11 (22)</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="label">BMI, Médiane (IQR)</td>
-<td class="gt_row gt_center" headers="stat_0">24 (21 – 29)</td>
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">Masque facial</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">2 (3.9)</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="label">ASA, n (%)</td>
-<td class="gt_row gt_center" headers="stat_0"><br>
-</td>
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">Sonde endotrachéale</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">28 (55)</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;1</td>
-<td class="gt_row gt_center" headers="stat_0">22 (39)</td>
+<td style="text-align: left;"><span style=" font-weight: bold;    ">Mode ventilatoire, n (%)</span></td>
+<td style="text-align: center;">51</td>
+<td style="text-align: center;"></td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;2</td>
-<td class="gt_row gt_center" headers="stat_0">19 (34)</td>
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">AI – PEP</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">1 (2.0)</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;3</td>
-<td class="gt_row gt_center" headers="stat_0">15 (27)</td>
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">PC</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">1 (2.0)</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="label">Geste en urgence, n (%)</td>
-<td class="gt_row gt_center" headers="stat_0"><br>
-</td>
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">VC</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">35 (69)</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Non</td>
-<td class="gt_row gt_center" headers="stat_0">51 (89)</td>
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">Ventilation spontanée</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">14 (27)</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Oui</td>
-<td class="gt_row gt_center" headers="stat_0">6 (11)</td>
+<td style="text-align: left;"><span style=" font-weight: bold;    ">PEP, n (%)</span></td>
+<td style="text-align: center;">30</td>
+<td style="text-align: center;"></td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="label">Heure anesthésie, Médiane (IQR)</td>
-<td class="gt_row gt_center" headers="stat_0">42,000 secs (34,500 secs – 50,400 secs)</td>
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">0</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">1 (3.3)</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="label">Type chirurgie, n (%)</td>
-<td class="gt_row gt_center" headers="stat_0"><br>
-</td>
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">3</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">3 (10)</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Accès veineux central</td>
-<td class="gt_row gt_center" headers="stat_0">4 (7.0)</td>
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">5</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">20 (67)</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Endoscopie digestive</td>
-<td class="gt_row gt_center" headers="stat_0">5 (8.8)</td>
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">6</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">6 (20)</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Gynécologie</td>
-<td class="gt_row gt_center" headers="stat_0">8 (14)</td>
+<td style="text-align: left;"><span style=" font-weight: bold;    ">Débit O2, n (%)</span></td>
+<td style="text-align: center;">13</td>
+<td style="text-align: center;"></td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Obstétricale</td>
-<td class="gt_row gt_center" headers="stat_0">1 (1.8)</td>
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">2</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">1 (7.7)</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Ophtalmologie</td>
-<td class="gt_row gt_center" headers="stat_0">5 (8.8)</td>
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">4</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">5 (38)</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;ORL</td>
-<td class="gt_row gt_center" headers="stat_0">11 (19)</td>
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">6</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">5 (38)</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Orthopédie</td>
-<td class="gt_row gt_center" headers="stat_0">1 (1.8)</td>
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">8</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">2 (15)</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Radiologie interventionnelle sauf tête</td>
-<td class="gt_row gt_center" headers="stat_0">2 (3.5)</td>
+<td style="text-align: left;"><span style=" font-weight: bold;    ">Extubation salle op, n (%)</span></td>
+<td style="text-align: center;">38</td>
+<td style="text-align: center;">36 (95)</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Thoracique</td>
-<td class="gt_row gt_center" headers="stat_0">2 (3.5)</td>
+<td style="text-align: left;"><span style=" font-weight: bold;    ">Durée intervention (min)</span></td>
+<td style="text-align: center;">57</td>
+<td style="text-align: center;"></td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Tissus mous, Plastique</td>
-<td class="gt_row gt_center" headers="stat_0">5 (8.8)</td>
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">Moyenne ± ET</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">80 ± 51</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Urologie</td>
-<td class="gt_row gt_center" headers="stat_0">3 (5.3)</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Vasculaire</td>
-<td class="gt_row gt_center" headers="stat_0">3 (5.3)</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Viscérale</td>
-<td class="gt_row gt_center" headers="stat_0">7 (12)</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="label">Type anesthésie, n (%)</td>
-<td class="gt_row gt_center" headers="stat_0"><br>
-</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;AG</td>
-<td class="gt_row gt_center" headers="stat_0">41 (72)</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;ALR et AG programmée</td>
-<td class="gt_row gt_center" headers="stat_0">3 (5.3)</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;ALR seule</td>
-<td class="gt_row gt_center" headers="stat_0">13 (23)</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="label">VVP, n (%)</td>
-<td class="gt_row gt_center" headers="stat_0"><br>
-</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Accès veineux préexistant</td>
-<td class="gt_row gt_center" headers="stat_0">4 (7.0)</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Non</td>
-<td class="gt_row gt_center" headers="stat_0">4 (7.0)</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Oui</td>
-<td class="gt_row gt_center" headers="stat_0">42 (74)</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Oui après induction inhalée</td>
-<td class="gt_row gt_center" headers="stat_0">7 (12)</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="label">ALR ou AL, n (%)</td>
-<td class="gt_row gt_center" headers="stat_0"><br>
-</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Non</td>
-<td class="gt_row gt_center" headers="stat_0">41 (72)</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Oui</td>
-<td class="gt_row gt_center" headers="stat_0">16 (28)</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="label">TYPE ALR, n (%)</td>
-<td class="gt_row gt_center" headers="stat_0"><br>
-</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Locale</td>
-<td class="gt_row gt_center" headers="stat_0">11 (69)</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Péridurale</td>
-<td class="gt_row gt_center" headers="stat_0">2 (13)</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Rachis anesthésie</td>
-<td class="gt_row gt_center" headers="stat_0">2 (13)</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Tronculaire</td>
-<td class="gt_row gt_center" headers="stat_0">1 (6.3)</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="label">KT, n (%)</td>
-<td class="gt_row gt_center" headers="stat_0"><br>
-</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Non</td>
-<td class="gt_row gt_center" headers="stat_0">1 (100)</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="label">ALR réalisée, n (%)</td>
-<td class="gt_row gt_center" headers="stat_0"><br>
-</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Patient réveillé</td>
-<td class="gt_row gt_center" headers="stat_0">15 (94)</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Sous sédation (AG)</td>
-<td class="gt_row gt_center" headers="stat_0">1 (6.3)</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="label">Débit O2 ALR, n (%)</td>
-<td class="gt_row gt_center" headers="stat_0"><br>
-</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;0</td>
-<td class="gt_row gt_center" headers="stat_0">1 (20)</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;4</td>
-<td class="gt_row gt_center" headers="stat_0">2 (40)</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;6</td>
-<td class="gt_row gt_center" headers="stat_0">2 (40)</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="label">NA (si sous sédation (AG)), n (%)</td>
-<td class="gt_row gt_center" headers="stat_0"><br>
-</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Oui</td>
-<td class="gt_row gt_center" headers="stat_0">42 (100)</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="label">AG ou sédation, n (%)</td>
-<td class="gt_row gt_center" headers="stat_0"><br>
-</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Non</td>
-<td class="gt_row gt_center" headers="stat_0">5 (8.8)</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Oui</td>
-<td class="gt_row gt_center" headers="stat_0">52 (91)</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="label">Pré-oxygénation, n (%)</td>
-<td class="gt_row gt_center" headers="stat_0"><br>
-</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;AI et/ou PEP</td>
-<td class="gt_row gt_center" headers="stat_0">2 (3.8)</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;D</td>
-<td class="gt_row gt_center" headers="stat_0">12 (23)</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Lunettes ou masque simple à oxygène</td>
-<td class="gt_row gt_center" headers="stat_0">8 (15)</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;VS Masque facial (AI=0, PEP=0)</td>
-<td class="gt_row gt_center" headers="stat_0">30 (58)</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="label">Induction hypnotique, n (%)</td>
-<td class="gt_row gt_center" headers="stat_0"><br>
-</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Inhalée sans N20</td>
-<td class="gt_row gt_center" headers="stat_0">7 (13)</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Intra-veineuse</td>
-<td class="gt_row gt_center" headers="stat_0">45 (87)</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="label">Entretien hypnotique, n (%)</td>
-<td class="gt_row gt_center" headers="stat_0"><br>
-</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Inhalée</td>
-<td class="gt_row gt_center" headers="stat_0">34 (72)</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Intra-veineuse</td>
-<td class="gt_row gt_center" headers="stat_0">13 (28)</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="label">Type halogéné, n (%)</td>
-<td class="gt_row gt_center" headers="stat_0"><br>
-</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Sevoflurane</td>
-<td class="gt_row gt_center" headers="stat_0">34 (100)</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="label">Réglage débit gaz frais, n (%)</td>
-<td class="gt_row gt_center" headers="stat_0"><br>
-</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Automatique (AINOC)</td>
-<td class="gt_row gt_center" headers="stat_0">3 (8.8)</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Manuel</td>
-<td class="gt_row gt_center" headers="stat_0">31 (91)</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="label">DGF, Médiane (IQR)</td>
-<td class="gt_row gt_center" headers="stat_0">1.00 (0.90 – 1.00)</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="label">Utilisation N2O, n (%)</td>
-<td class="gt_row gt_center" headers="stat_0"><br>
-</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Non</td>
-<td class="gt_row gt_center" headers="stat_0">34 (100)</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="label">Administration morphiniques, n (%)</td>
-<td class="gt_row gt_center" headers="stat_0"><br>
-</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;IV bolus</td>
-<td class="gt_row gt_center" headers="stat_0">38 (90)</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;IV bolus + continue</td>
-<td class="gt_row gt_center" headers="stat_0">2 (4.8)</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;IV continue</td>
-<td class="gt_row gt_center" headers="stat_0">2 (4.8)</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="label">Administration curares, n (%)</td>
-<td class="gt_row gt_center" headers="stat_0"><br>
-</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;IV bolus</td>
-<td class="gt_row gt_center" headers="stat_0">18 (100)</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="label">Oxygénation/ventilation, n (%)</td>
-<td class="gt_row gt_center" headers="stat_0"><br>
-</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Non</td>
-<td class="gt_row gt_center" headers="stat_0">6 (11)</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Oui</td>
-<td class="gt_row gt_center" headers="stat_0">51 (89)</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="label">Interface voies aériennes, n (%)</td>
-<td class="gt_row gt_center" headers="stat_0"><br>
-</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Dispositif supra-glottique</td>
-<td class="gt_row gt_center" headers="stat_0">10 (20)</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Lunettes</td>
-<td class="gt_row gt_center" headers="stat_0">11 (22)</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Masque facial</td>
-<td class="gt_row gt_center" headers="stat_0">2 (3.9)</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Sonde endotrachéale</td>
-<td class="gt_row gt_center" headers="stat_0">28 (55)</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="label">Mode ventilatoire, n (%)</td>
-<td class="gt_row gt_center" headers="stat_0"><br>
-</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;AI – PEP</td>
-<td class="gt_row gt_center" headers="stat_0">1 (2.0)</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;PC</td>
-<td class="gt_row gt_center" headers="stat_0">1 (2.0)</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;VC</td>
-<td class="gt_row gt_center" headers="stat_0">35 (69)</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Ventilation spontanée</td>
-<td class="gt_row gt_center" headers="stat_0">14 (27)</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="label">PEP, n (%)</td>
-<td class="gt_row gt_center" headers="stat_0"><br>
-</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;0</td>
-<td class="gt_row gt_center" headers="stat_0">1 (3.2)</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;05</td>
-<td class="gt_row gt_center" headers="stat_0">8 (26)</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;06</td>
-<td class="gt_row gt_center" headers="stat_0">4 (13)</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;3</td>
-<td class="gt_row gt_center" headers="stat_0">3 (9.7)</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;5</td>
-<td class="gt_row gt_center" headers="stat_0">12 (39)</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;6</td>
-<td class="gt_row gt_center" headers="stat_0">2 (6.5)</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;D</td>
-<td class="gt_row gt_center" headers="stat_0">1 (3.2)</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="label">Débit O2, n (%)</td>
-<td class="gt_row gt_center" headers="stat_0"><br>
-</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;06</td>
-<td class="gt_row gt_center" headers="stat_0">2 (14)</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;08</td>
-<td class="gt_row gt_center" headers="stat_0">1 (7.1)</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;2</td>
-<td class="gt_row gt_center" headers="stat_0">1 (7.1)</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;4</td>
-<td class="gt_row gt_center" headers="stat_0">5 (36)</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;6</td>
-<td class="gt_row gt_center" headers="stat_0">3 (21)</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;8</td>
-<td class="gt_row gt_center" headers="stat_0">1 (7.1)</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;D</td>
-<td class="gt_row gt_center" headers="stat_0">1 (7.1)</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="label">Indication O2, n (%)</td>
-<td class="gt_row gt_center" headers="stat_0"><br>
-</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Sédation (dont AG-VS)</td>
-<td class="gt_row gt_center" headers="stat_0">14 (100)</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="label">Extubation salle op, n (%)</td>
-<td class="gt_row gt_center" headers="stat_0"><br>
-</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Non</td>
-<td class="gt_row gt_center" headers="stat_0">2 (5.3)</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Oui</td>
-<td class="gt_row gt_center" headers="stat_0">36 (95)</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="label">Heure extubation, Médiane (IQR)</td>
-<td class="gt_row gt_center" headers="stat_0">45,600 secs (39,600 secs – 55,200 secs)</td>
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">Min, Max</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">14, 225</td>
 </tr>
 </tbody>
 </table>
-
+</div>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pyramid</span>(patients<span class="sc">$</span>age, patients<span class="sc">$</span>sexe, <span class="at">col.gender =</span> <span class="fu">c</span>(<span class="st">"pink"</span>, <span class="st">"lightblue"</span>), <span class="at">main =</span> <span class="st">"Pyramide des âges"</span>, <span class="at">binwidth =</span> <span class="dv">10</span>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div id="fig-pyr" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-pyr-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="patients_files/figure-html/fig-pyr-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pyr-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: Pyramide des âges
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>patients <span class="sc">|&gt;</span> </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">fct_infreq</span>(type_chirurgie), <span class="at">fill =</span> type_chirurgie)) <span class="sc">+</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>) <span class="sc">+</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Type de chirurgie"</span>,</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"n"</span>,</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">""</span>) <span class="sc">+</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_light</span>() <span class="sc">+</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>      <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">18</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>      <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">12</span>),</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>      <span class="at">axis.title.x =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>      <span class="at">axis.title.y =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">12</span>),</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>      <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">12</span>, <span class="at">angle =</span> <span class="dv">40</span>, <span class="at">hjust =</span> <span class="dv">1</span>),</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>      <span class="at">axis.text.y =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">12</span>),</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>      <span class="at">legend.position =</span> <span class="st">"none"</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div id="fig-type" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-type-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="patients_files/figure-html/fig-type-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-type-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4: Type de chirurgie
+</figcaption>
+</figure>
 </div>
 </div>
 </div>

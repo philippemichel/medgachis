@@ -1,6 +1,16 @@
 project:
   type: website
   output-dir: "docs"
+language:
+  title-block-author-single: "Auteur"
+author:
+  - name: "D<sup>r</sup> Philippe MICHEL"
+    orcid: "0000-0003-2392-7186"
+    email: "philippe.michel@ght-novo.fr"
+    role: "Statisticien"
+    affiliations:
+      name: "Hôpital NOVO"
+      city: "Pontoise"
 lang: fr
 website:
   title: "MedGachis"
