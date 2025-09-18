@@ -1,0 +1,131 @@
+---
+title: "Facteurs de risque"
+format: html
+---
+
+::: panel-tabset
+```{r}
+#| label: setup
+
+library(corrplot)
+library(baseph)
+library(ggsci)
+library(readODS)
+library(janitor)
+library(forestmodel)
+library(GGally)
+library(epiDisplay)
+library(plotly)
+library(emmeans)
+library(tidyverse)
+library(kableExtra)
+library(gtsummary)
+library(forestmodel)
+library(fmsb)
+library(labelled)
+#
+load("datas/medgachis.RData")
+
+classeur <- "medgachis.ods"
+expx <- FALSE
+if (expx) {
+  file.create(classeur)
+  file.remove(classeur)
+  write_ods(iris, classeur)
+}
+
+# sessionInfo()
+theme_gtsummary_language(language = "fr", decimal.mark = ",")
+theme_gtsummary_journal(journal = "jama")
+options(OutDec = ",")
+ptest <- list(all_continuous() ~ "t.test", all_categorical() ~ "chisq.test")
+ptest2 <- list(all_continuous() ~ "paired.t.test", all_categorical() ~ "chisq.test")
+stt <- list(
+  all_continuous() ~ "{mean} ({sd})",
+  all_categorical() ~ "{n}/{N} ({p}%)"
+)
+```
+
+# Jeté & Patients
+
+On recherche des facteurs de risque liés au patient.
+
+```{r}
+#| label: medpat-prep
+
+ttp <-left_join(patients, tt, by = c("formule_sys" = "code_patient" ))
+  
+```
+
+```{r}
+#| label: medpat-tab1
+#| tab-cap: "Médicaments jetés selon les caractéristiques des patients"
+
+ttp |> 
+  dplyr::select(age, sexe, bmi:type_anesthesie, jeter, d_inter) |>
+  tbl_summary(
+    statistic = stt,
+    missing = "no",
+    by = jeter, 
+    percent = "row"
+  ) |> 
+  add_p(test = ptest) |>
+  add_q() |> 
+    add_n() |> 
+  bold_labels() |>
+  bold_p(q = TRUE) |>
+  modify_header(label ~ " ") |> 
+  as_kable_extra(escape = TRUE) |> 
+   kable_material(c("striped", "hover", "responsive")) |> 
+   scroll_box(width = "100%", height = "650px")
+```
+
+Plus le geste est simple, sur des patients sans problème plus on jette de médicament. Mention spéciale pour la pose de KTC.
+
+```{r}
+#| label: medpat-tab2
+#| tab-cap: "Médicaments jetés selon les caractéristiques des patients (régression)"
+#| 
+glm(jeter ~ age + bmi + asa + geste_en_urgence + type_anesthesie + d_inter, data = ttp, family = "binomial") |> 
+forest_model(factor_separate_line = TRUE)
+```
+
+L'analyse multifactorielle (régression logistique) confirme qu'il y a moins de médicaments jetés lors des interventions en urgences mais plus lors des ALR seules (pose de KTC).
+
+# Jeté & Intervention
+
+```{r}
+#| label: medinter-tab1
+#| tab-cap: "Médicaments jetés selon les caractéristiques de l'intervention"
+
+ttp |> 
+  dplyr::select(type_anesthesie:d_inter, jeter) |>
+  tbl_summary(
+    statistic = stt,
+    missing = "no",
+    by = jeter, 
+    percent = "row"
+  ) |> 
+  add_p(test = ptest) |>
+  add_q() |> 
+    add_n() |> 
+  bold_labels() |>
+  bold_p(q = TRUE) |>
+  modify_header(label ~ " ") |> 
+  as_kable_extra(escape = TRUE) |> 
+   kable_material(c("striped", "hover", "responsive")) |> 
+   scroll_box(width = "100%", height = "650px")
+```
+
+
+```{r}
+#| label: medpat-tab2
+#| tab-cap: "Médicaments jetés selon les caractéristiques des patients (régression)"
+#| 
+glm(jeter ~ vvp + type_alr  +  interface_voies_aeriennes + d_inter , data = ttp, family = "binomial") |> 
+forest_model(factor_separate_line = TRUE)
+```
+
+Les ALR locale correspondent en grande partie aux poses de KTC ce qui introduit un biais. L'analyse est difficile car certaines variables n'ont de sens que pour les AG, d'autres pour les ALR ce qui introduit un flou & potentiellement des calculs erronés surtout pour la régression. 
+:::
+

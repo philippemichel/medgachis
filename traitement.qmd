@@ -1,10 +1,9 @@
 ---
-title: "Bloc"
+title: "Traitement"
 format: html
 ---
 
 ::: panel-tabset
-
 ```{r}
 #| label: setup
 
@@ -47,7 +46,6 @@ stt <- list(
 )
 ```
 
-
 # Qualité des données
 
 ## Corrélations anormales
@@ -55,12 +53,12 @@ stt <- list(
 ```{r}
 #| label: cor-prep
 
-corxb <- function(prof, titx) {
+corxt <- function(prof, titx) {
   tit <- paste0("Corrélations ", titx)
   prof |>
     remove_constant() |>
     mutate_if(is.factor, as.numeric) |>
-    dplyr::select(!code_iade) |>
+    dplyr::select(!code_patient) |>
     ggcorr(drop = TRUE, hjust = 0.9) +
     labs(title = tit,
          y = "n",
@@ -84,8 +82,8 @@ corxb <- function(prof, titx) {
 #| label: fig-corregul
 #| fig-cap: Corrélations internes
 
-bloc |>
-  corxb("Bloc")
+tt |>
+  corxt("Bloc")
 ```
 
 Il n'y a pas de corrélation *anormale* pouvant gêner l'analyse.
@@ -94,39 +92,61 @@ Il n'y a pas de corrélation *anormale* pouvant gêner l'analyse.
 
 ```{r}
 #| label: fig-manq-apt
-#| fig-cap: Données manquantes (questionnaire bloc)
+#| fig-cap: Données manquantes (questionnaire traitement)
 
- bloc |>
-  dplyr::select(-c(code_iade)) |>
+ tt |>
+  dplyr::select(-c(code_patient)) |>
   vis_dat(palette = "qual")
 ```
 
+Le motif du *Médicament jeté* est très mal renseigné.
 
 # Description
 
-
 ```{r}
 #| label: tbl-desc
-#| tbl-cap: Description --Bloc
+#| tbl-cap: Description --trait
 
-bloc |>
-dplyr::select(-code_iade) |>
-  tbl_summary(missing = "no",
-              type = all_continuous() ~ "continuous2",
-               statistic = all_continuous() ~ c(
-      "{mean} ± {sd}",
-      "{min}, {max}")
-             ) |> 
-               
+tt |>
+  dplyr::select(-code_patient) |>
+  tbl_summary(
+    missing = "no",
+    type = all_continuous() ~ "continuous2",
+    statistic = all_continuous() ~ c("{mean} ± {sd}", "{min}, {max}")
+  ) |>
+  add_n() |>
+  bold_labels() |>
+  modify_header(label ~ " ") |>
+  as_kable_extra() |>
+  kable_material(c("striped", "hover")) |>
+  scroll_box(width = "100%", height = "80%")
+```
 
-  add_n() |> 
+# Analyse
+
+## Par médicament
+
+On ne peut faire qu'une analyse par classe de médicament, pas par molécules (trop de classes).
+
+Les bzd/neuroleptiques, hypnotiques & sédatifs/analgésie ont été regroupés dans la même classe.
+
+```{r}
+#| label: tab-medjet1
+#| tab-cap: médicaments jetés par classe
+
+
+tt |> 
+drop_na(categorie_medicament, jeter) |>
+tbl_cross(
+  row = categorie_medicament,
+  col = jeter,
+  percent = "row",
+  missing_text = "Non renseigné"
+) |> 
   bold_labels() |>
   modify_header(label ~ " ") |> 
   as_kable_extra() |> 
    kable_material(c("striped", "hover")) |> 
-   scroll_box(width = "100%", height = "80%")
+   scroll_box(width = "100%", height = "650px")
 ```
-
-
-
 :::

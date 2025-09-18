@@ -38,6 +38,7 @@ website:
           - patients.qmd
           - bloc.qmd
           - traitement.qmd
+          - medpat.qmd
   open-graph:
     locale: fr_FR
     site-name: MedGachis

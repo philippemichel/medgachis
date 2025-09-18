@@ -4,7 +4,7 @@
     "href": "patients.html#corrélations-anormales",
     "title": "patients",
     "section": "Corrélations anormales",
-    "text": "Corrélations anormales\n\n\nCode\ncorx &lt;- function(prof, titx) {\n  tit &lt;- paste0(\"Corrélations \", titx)\n  prof |&gt;\n    remove_constant() |&gt;\n    mutate_if(is.factor, as.numeric) |&gt;\n    dplyr::select(!formule_sys) |&gt;\n    ggcorr(drop = TRUE, hjust = 0.9) +\n    labs(title = tit,\n         y = \"n\",\n         caption = \"Corrélations. Validation interne du questionnaire.\") +\n    theme_minimal() +\n    theme(\n      plot.title = element_text(size = 14, face = \"bold\"),\n      plot.subtitle = element_text(size = 12),\n      axis.title.x = element_blank(),\n      legend.title = element_blank(),\n      axis.title.y = element_blank(),\n      ,\n      axis.text.x = element_text(size = 12),\n      axis.text.y = element_text(size = 12),\n      legend.position = \"right\"\n    )\n}\n\n\n\n\nCode\npatients |&gt;\n  corx(\"Patients\")\n\n\n\n\n\n\n\n\nFigure 1: Corrélations internes\n\n\n\n\n\nIl n’y a pas de corrélation anormale pouvant gêner l’analyse.",
+    "text": "Corrélations anormales\n\n\nCode\ncorxp &lt;- function(prof, titx) {\n  tit &lt;- paste0(\"Corrélations \", titx)\n  prof |&gt;\n    remove_constant() |&gt;\n    mutate_if(is.factor, as.numeric) |&gt;\n    dplyr::select(!formule_sys) |&gt;\n    ggcorr(drop = TRUE, hjust = 0.9) +\n    labs(title = tit,\n         y = \"n\",\n         caption = \"Corrélations. Validation interne du questionnaire.\") +\n    theme_minimal() +\n    theme(\n      plot.title = element_text(size = 14, face = \"bold\"),\n      plot.subtitle = element_text(size = 12),\n      axis.title.x = element_blank(),\n      legend.title = element_blank(),\n      axis.title.y = element_blank(),\n      ,\n      axis.text.x = element_text(size = 12),\n      axis.text.y = element_text(size = 12),\n      legend.position = \"right\"\n    )\n}\n\n\n\n\nCode\n gg &lt;-  patients |&gt;\ncorxp(\"Patients\")\nggplotly(gg)\n\n\n\n\n\n\n\n\nFigure 1: Corrélations internes\n\n\n\n\nIl n’y a pas de corrélation anormale pouvant gêner l’analyse.",
     "crumbs": [
       "MedGachis",
       "patients"
@@ -15,7 +15,7 @@
     "href": "patients.html#données-manquantes",
     "title": "patients",
     "section": "Données manquantes",
-    "text": "Données manquantes\n\n\nCode\ntt |&gt;\n  dplyr::select(-c(!formule_sys)) |&gt;\n  vis_dat(palette = \"qual\")\n\n\n\n\n\n\n\n\nFigure 2: Données manquantes (questionnaire patient)\n\n\n\n\n\nAucune donnée manquante.",
+    "text": "Données manquantes\n\n\nCode\npatients |&gt;\n  dplyr::select(-c(formule_sys)) |&gt;\n  vis_dat(palette = \"qual\")\n\n\n\n\n\n\n\n\nFigure 2: Données manquantes (questionnaire patient)\n\n\n\n\n\nLes données manquantes visibles sur le graphique correspondent souvent à des données inexistantes (par ex. le type d’ALR pour un patient sous AG)",
     "crumbs": [
       "MedGachis",
       "patients"
@@ -26,7 +26,7 @@
     "href": "index.html",
     "title": "Introduction",
     "section": "",
-    "text": "GénéralitésImport\n\n\n\nLes variables constantes & les variables vides ont été exclues de l’analyse.\nDans les tableaux, pour les variables en Oui/Non, seules les valeurs pour le Oui sont indiquées.\n\n\n\n\n\nCode\nlibrary(\"tidyverse\")\nlibrary(\"readODS\")\nlibrary(\"janitor\")\nlibrary(\"labelled\")\nlibrary(\"baseph\")\n#\nnax &lt;- c(\"\", \" \", \"NA\",\"D\")\n\npatients &lt;- read_ods(\"./datas/patients.ods\", na = nax) |&gt;\n  clean_names() |&gt;\n  mutate(across(where(is.character), as.factor))\nbn &lt;- read_ods(\"./datas/patients.ods\", sheet = \"bnom\", na = nax)\nvar_label(patients) &lt;- bn$titres\npatients &lt;- patients |&gt;\n  remove_constant(na.rm = TRUE) |&gt; \n  mutate(d_inter =  as.numeric(patients$heure_extubation - patients$heure_anesthesie)/60) |&gt; \n  dplyr::select(-starts_with(\"heure\")) \nvar_label(patients$d_inter) &lt;- \"Durée intervention (min)\"\n\n#\nbloc &lt;- read_ods(\"./datas/bloc.ods\", na = nax) |&gt;\n  clean_names() |&gt;\n  mutate(across(where(is.character), as.factor))\nbn &lt;- read_ods(\"./datas/bloc.ods\", sheet = \"bnom\", na =  nax)\nvar_label(bloc) &lt;- bn$titres\nbloc &lt;- remove_constant(bloc, na.rm = TRUE)\n#\ntt &lt;- read_ods(\"./datas/traitement.ods\", na = nax) |&gt;\n  clean_names() |&gt;\n  mutate(across(where(is.character), as.factor))\nbn &lt;- read_ods(\"./datas/traitement.ods\", sheet = \"bnom\", na = nax)\nvar_label(tt) &lt;- bn$titres\ntt &lt;- remove_constant(tt, na.rm = TRUE)\n\n\nrm(bn)\nsave(patients, bloc, tt, file = \"datas/medgachis.RData\")\nload(\"datas/medgachis.RData\")",
+    "text": "GénéralitésImport\n\n\n\nLes variables constantes & les variables vides ont été exclues de l’analyse.\nDans les tableaux, pour les variables en Oui/Non, seules les valeurs pour le Oui sont indiquées.\nla colonne q-valeur correspond à la p-value corrigée pour les comparaisons multiples selon la méthode de Benjamini-Hochberg.\n\n\n\n\n\n\n\nAvertissement\n\n\n\nTous les résultats sont à interpréter avec prudence en raison du faible nombre de cas (57 patients).\n\n\n\n\n\n\nCode\nlibrary(\"tidyverse\")\nlibrary(\"readODS\")\nlibrary(\"janitor\")\nlibrary(\"labelled\")\nlibrary(\"baseph\")\n#\nnax &lt;- c(\"\", \" \", \"NA\",\"D\")\n\npatients &lt;- read_ods(\"./datas/patients.ods\", na = nax) |&gt;\n  clean_names() |&gt;\n  mutate(across(where(is.character), as.factor))\nbn &lt;- read_ods(\"./datas/patients.ods\", sheet = \"bnom\", na = nax)\nvar_label(patients) &lt;- bn$titres\npatients &lt;- patients |&gt;\n  remove_constant(na.rm = TRUE) |&gt; \n  mutate(asa = as.factor(asa)) |&gt;\n  mutate(d_inter =  as.numeric(patients$heure_extubation - patients$heure_anesthesie)/60) |&gt; \n  dplyr::select(-starts_with(\"heure\")) \nvar_label(patients$d_inter) &lt;- \"Durée intervention (min)\"\n\n#\nbloc &lt;- read_ods(\"./datas/bloc.ods\", na = nax) |&gt;\n  clean_names() |&gt;\n  mutate(across(where(is.character), as.factor))\nbn &lt;- read_ods(\"./datas/bloc.ods\", sheet = \"bnom\", na =  nax)\nvar_label(bloc) &lt;- bn$titres\nbloc &lt;- remove_constant(bloc, na.rm = TRUE)\n#\ntt &lt;- read_ods(\"./datas/traitement.ods\", na = nax) |&gt;\n  clean_names() |&gt;\n  mutate(across(where(is.character), as.factor))\nbn &lt;- read_ods(\"./datas/traitement.ods\", sheet = \"bnom\", na = nax)\nvar_label(tt) &lt;- bn$titres\ntt &lt;- remove_constant(tt, na.rm = TRUE) |&gt; \n  mutate(jeter = cut(volume_jete_ml,\n                     include.lowest = FALSE,\n                     right = FALSE,\n                     dig.lab = 4,\n                     breaks = c(-1,0.1, 100),\n                     labels = c(\"Non\", \"Oui\"))) |&gt; \n# Recodage de tt$categorie_medicament\nmutate(categorie_medicament = fct_recode(categorie_medicament,\n    \"ANESTHÉSIQUES LOCAUX\" = \"ANÉSTHESIQUES LOCAUX\",\n    \"SÉDATIF-ANALGÉSIE\" = \"BZD/NEUROLEPTIQUES\",\n    \"SÉDATIF-ANALGÉSIE\" = \"HYPNOTIQUE\"))\n# \nvar_label(tt$jeter) &lt;- \"Médicament jeté ?\"\n\n\nrm(bn)\nsave(patients, bloc, tt, file = \"datas/medgachis.RData\")\nload(\"datas/medgachis.RData\")",
     "crumbs": [
       "MedGachis",
       "Introduction"
@@ -37,7 +37,7 @@
     "href": "bloc.html#corrélations-anormales",
     "title": "Bloc",
     "section": "Corrélations anormales",
-    "text": "Corrélations anormales\n\n\nCode\ncorx &lt;- function(prof, titx) {\n  tit &lt;- paste0(\"Corrélations \", titx)\n  prof |&gt;\n    remove_constant() |&gt;\n    mutate_if(is.factor, as.numeric) |&gt;\n    dplyr::select(!code_iade) |&gt;\n    ggcorr(drop = TRUE, hjust = 0.9) +\n    labs(title = tit,\n         y = \"n\",\n         caption = \"Corrélations. Validation interne du questionnaire.\") +\n    theme_minimal() +\n    theme(\n      plot.title = element_text(size = 14, face = \"bold\"),\n      plot.subtitle = element_text(size = 12),\n      axis.title.x = element_blank(),\n      legend.title = element_blank(),\n      axis.title.y = element_blank(),\n      ,\n      axis.text.x = element_text(size = 12),\n      axis.text.y = element_text(size = 12),\n      legend.position = \"right\"\n    )\n}\n\n\n\n\nCode\nbloc |&gt;\n  corx(\"Bloc\")\n\n\n\n\n\n\n\n\nFigure 1: Corrélations internes\n\n\n\n\n\nIl n’y a pas de corrélation anormale pouvant gêner l’analyse.",
+    "text": "Corrélations anormales\n\n\nCode\ncorxb &lt;- function(prof, titx) {\n  tit &lt;- paste0(\"Corrélations \", titx)\n  prof |&gt;\n    remove_constant() |&gt;\n    mutate_if(is.factor, as.numeric) |&gt;\n    dplyr::select(!code_iade) |&gt;\n    ggcorr(drop = TRUE, hjust = 0.9) +\n    labs(title = tit,\n         y = \"n\",\n         caption = \"Corrélations. Validation interne du questionnaire.\") +\n    theme_minimal() +\n    theme(\n      plot.title = element_text(size = 14, face = \"bold\"),\n      plot.subtitle = element_text(size = 12),\n      axis.title.x = element_blank(),\n      legend.title = element_blank(),\n      axis.title.y = element_blank(),\n      ,\n      axis.text.x = element_text(size = 12),\n      axis.text.y = element_text(size = 12),\n      legend.position = \"right\"\n    )\n}\n\n\n\n\nCode\nbloc |&gt;\n  corxb(\"Bloc\")\n\n\n\n\n\n\n\n\nFigure 1: Corrélations internes\n\n\n\n\n\nIl n’y a pas de corrélation anormale pouvant gêner l’analyse.",
     "crumbs": [
       "MedGachis",
       "Bloc"
@@ -48,10 +48,54 @@
     "href": "bloc.html#données-manquantes",
     "title": "Bloc",
     "section": "Données manquantes",
-    "text": "Données manquantes\n\n\nCode\n bloc |&gt;\n  dplyr::select(-c(!code_iade)) |&gt;\n  vis_dat(palette = \"qual\")\n\n\n\n\n\n\n\n\nFigure 2: Données manquantes (questionnaire bloc)\n\n\n\n\n\nAucune donnée manquante.",
+    "text": "Données manquantes\n\n\nCode\n bloc |&gt;\n  dplyr::select(-c(code_iade)) |&gt;\n  vis_dat(palette = \"qual\")\n\n\n\n\n\n\n\n\nFigure 2: Données manquantes (questionnaire bloc)",
     "crumbs": [
       "MedGachis",
       "Bloc"
+    ]
+  },
+  {
+    "objectID": "traitement.html#corrélations-anormales",
+    "href": "traitement.html#corrélations-anormales",
+    "title": "Traitement",
+    "section": "Corrélations anormales",
+    "text": "Corrélations anormales\n\n\nCode\ncorxt &lt;- function(prof, titx) {\n  tit &lt;- paste0(\"Corrélations \", titx)\n  prof |&gt;\n    remove_constant() |&gt;\n    mutate_if(is.factor, as.numeric) |&gt;\n    dplyr::select(!code_patient) |&gt;\n    ggcorr(drop = TRUE, hjust = 0.9) +\n    labs(title = tit,\n         y = \"n\",\n         caption = \"Corrélations. Validation interne du questionnaire.\") +\n    theme_minimal() +\n    theme(\n      plot.title = element_text(size = 14, face = \"bold\"),\n      plot.subtitle = element_text(size = 12),\n      axis.title.x = element_blank(),\n      legend.title = element_blank(),\n      axis.title.y = element_blank(),\n      ,\n      axis.text.x = element_text(size = 12),\n      axis.text.y = element_text(size = 12),\n      legend.position = \"right\"\n    )\n}\n\n\n\n\nCode\ntt |&gt;\n  corxt(\"Bloc\")\n\n\n\n\n\n\n\n\nFigure 1: Corrélations internes\n\n\n\n\n\nIl n’y a pas de corrélation anormale pouvant gêner l’analyse.",
+    "crumbs": [
+      "MedGachis",
+      "Traitement"
+    ]
+  },
+  {
+    "objectID": "traitement.html#données-manquantes",
+    "href": "traitement.html#données-manquantes",
+    "title": "Traitement",
+    "section": "Données manquantes",
+    "text": "Données manquantes\n\n\nCode\n tt |&gt;\n  dplyr::select(-c(code_patient)) |&gt;\n  vis_dat(palette = \"qual\")\n\n\n\n\n\n\n\n\nFigure 2: Données manquantes (questionnaire traitement)\n\n\n\n\n\nLe motif du Médicament jeté est très mal renseigné.",
+    "crumbs": [
+      "MedGachis",
+      "Traitement"
+    ]
+  },
+  {
+    "objectID": "traitement.html#par-médicament",
+    "href": "traitement.html#par-médicament",
+    "title": "Traitement",
+    "section": "Par médicament",
+    "text": "Par médicament\nOn ne peut faire qu’une analyse par classe de médicament, pas par molécules (trop de classes).\nLes bzd/neuroleptiques, hypnotiques & sédatifs/analgésie ont été regroupés dans la même classe.\n\n\nCode\ntt |&gt; \ndrop_na(categorie_medicament, jeter) |&gt;\ntbl_cross(\n  row = categorie_medicament,\n  col = jeter,\n  percent = \"row\",\n  missing_text = \"Non renseigné\"\n) |&gt; \n  bold_labels() |&gt;\n  modify_header(label ~ \" \") |&gt; \n  as_kable_extra() |&gt; \n   kable_material(c(\"striped\", \"hover\")) |&gt; \n   scroll_box(width = \"100%\", height = \"650px\")\n\n\n\n\nmédicaments jetés par classe\n\n\n\n\n\n\n\n\n\n\nMédicament jeté ?\n\n\n\n\n\nNon\nOui\nTotal\n\n\n\n\nCatégorie médicament, n (%)\n\n\n\n\n\nAMINE\n7 (44%)\n9 (56%)\n16 (100%)\n\n\nANESTHÉSIQUES LOCAUX\n8 (73%)\n3 (27%)\n11 (100%)\n\n\nANTALGIQUE\n66 (84%)\n13 (16%)\n79 (100%)\n\n\nANTIBIOTIQUE\n19 (95%)\n1 (5.0%)\n20 (100%)\n\n\nANTICOAGULANT\n2 (50%)\n2 (50%)\n4 (100%)\n\n\nANTIDOTE\n1 (25%)\n3 (75%)\n4 (100%)\n\n\nAUTRES\n6 (67%)\n3 (33%)\n9 (100%)\n\n\nSÉDATIF-ANALGÉSIE\n96 (59%)\n66 (41%)\n162 (100%)\n\n\nCARDIO/VASC\n12 (32%)\n25 (68%)\n37 (100%)\n\n\nCORTICOIDES\n34 (81%)\n8 (19%)\n42 (100%)\n\n\nCURARE\n7 (20%)\n28 (80%)\n35 (100%)\n\n\nDIGESTIF\n6 (50%)\n6 (50%)\n12 (100%)\n\n\nHEMOSTATIQUE\n4 (100%)\n0 (0%)\n4 (100%)\n\n\nMÉTABOLIQUE\n1 (100%)\n0 (0%)\n1 (100%)\n\n\nMORPHINIQUE\n31 (43%)\n41 (57%)\n72 (100%)\n\n\nTotal, n (%)\n300 (59%)\n208 (41%)\n508 (100%)",
+    "crumbs": [
+      "MedGachis",
+      "Traitement"
+    ]
+  },
+  {
+    "objectID": "medpat.html",
+    "href": "medpat.html",
+    "title": "Facteurs de risque",
+    "section": "",
+    "text": "Jeté & Patients\n\n\nOn recherche des facteurs de risque liés au patient.\n\n\nCode\nttp &lt;-left_join(patients, tt, by = c(\"formule_sys\" = \"code_patient\" ))\n\n\n\n\nCode\nttp |&gt; \n  dplyr::select(age, sexe, bmi:type_anesthesie, jeter) |&gt;\n  tbl_summary(\n    statistic = stt,\n    missing = \"no\",\n    by = jeter, \n    percent = \"row\"\n  ) |&gt; \n  add_p(test = ptest) |&gt;\n  add_q() |&gt; \n    add_n() |&gt; \n  bold_labels() |&gt;\n  modify_header(label ~ \" \") |&gt; \n  as_kable_extra() |&gt; \n   kable_material(c(\"striped\", \"hover\")) |&gt; \n   scroll_box(width = \"100%\", height = \"650px\")\n\n\n\n\nMédicaments jetés selon les caractéristiques des patients\n\n\n\n\n\n\n\n\n\n\n\nN\nNon\nN = 285\nOui\nN = 201\np-valeur\nq-valeur\n\n\n\n\nAge, Moyenne (ET)\n486\n47 (22)\n37 (25)\n&lt;0,001\n&lt;0,001\n\n\nSexe, n/N (%)\n486\n\n\n0,52\n0,52\n\n\nFemme\n\n204/354 (58%)\n150/354 (42%)\n\n\n\n\nHomme\n\n81/132 (61%)\n51/132 (39%)\n\n\n\n\nBMI, Moyenne (ET)\n483\n26 (7)\n23 (6)\n&lt;0,001\n&lt;0,001\n\n\nASA, n/N (%)\n474\n\n\n&lt;0,001\n&lt;0,001\n\n\n1\n\n129/259 (50%)\n130/259 (50%)\n\n\n\n\n2\n\n90/130 (69%)\n40/130 (31%)\n\n\n\n\n3\n\n58/85 (68%)\n27/85 (32%)\n\n\n\n\nGeste en urgence, n/N (%)\n486\n\n\n0,41\n0,47\n\n\nNon\n\n250/432 (58%)\n182/432 (42%)\n\n\n\n\nOui\n\n35/54 (65%)\n19/54 (35%)\n\n\n\n\nType chirurgie, n/N (%)\n486\n\n\n0,002\n0,003\n\n\nAccès veineux central\n\n2/10 (20%)\n8/10 (80%)\n\n\n\n\nEndoscopie digestive\n\n5/11 (45%)\n6/11 (55%)\n\n\n\n\nGynécologie\n\n73/150 (49%)\n77/150 (51%)\n\n\n\n\nObstétricale\n\n4/7 (57%)\n3/7 (43%)\n\n\n\n\nOphtalmologie\n\n3/7 (43%)\n4/7 (57%)\n\n\n\n\nORL\n\n40/77 (52%)\n37/77 (48%)\n\n\n\n\nOrthopédie\n\n12/13 (92%)\n1/13 (7.7%)\n\n\n\n\nRadiologie interventionnelle sauf tête\n\n16/23 (70%)\n7/23 (30%)\n\n\n\n\nThoracique\n\n20/29 (69%)\n9/29 (31%)\n\n\n\n\nTissus mous, Plastique\n\n34/48 (71%)\n14/48 (29%)\n\n\n\n\nUrologie\n\n18/25 (72%)\n7/25 (28%)\n\n\n\n\nVasculaire\n\n11/16 (69%)\n5/16 (31%)\n\n\n\n\nViscérale\n\n47/70 (67%)\n23/70 (33%)\n\n\n\n\nType anesthésie, n/N (%)\n486\n\n\n0,019\n0,027\n\n\nAG\n\n235/405 (58%)\n170/405 (42%)\n\n\n\n\nALR et AG programmée\n\n32/42 (76%)\n10/42 (24%)\n\n\n\n\nALR seule\n\n18/39 (46%)\n21/39 (54%)\n\n\n\n\n\n1 test de Student; test du khi-deux d'indépendance\n\n\n\n\n\n\n\n2 Correction du risque global d'erreur pour tests multiples\n\n\n\n\n\n\n\n\n\n\n\n\nPlus le geste est simple, sur des patients sans problème plus on jette de médicament. Mention spéciale pour la pose de KTC.\n\n\nCode\nglm(jeter ~ age + bmi + asa + geste_en_urgence + type_anesthesie, data = ttp, family = \"binomial\") |&gt; \nforest_model(factor_separate_line = TRUE)\n\n\n\n\n\n\n\n\n\nL’analyse multifactorielle (régression logistique) confirme qu’il y a moins de médicaments jetés lors des interventions en urgences mais plus lors des ALR seules.",
+    "crumbs": [
+      "MedGachis",
+      "Facteurs de risque"
     ]
   }
 ]

@@ -9,6 +9,11 @@ format: html
 
 - Les variables constantes & les variables vides ont été exclues de l'analyse.
 -  Dans les tableaux, pour les variables en `Oui/Non`, seules les valeurs pour le `Oui` sont indiquées.
+- la colonne `q-valeur` correspond à la p-value corrigée pour les comparaisons multiples selon la méthode de Benjamini-Hochberg.
+
+:::{.callout-warning}
+Tous les résultats sont à interpréter avec prudence en raison du faible nombre de cas (57 patients).
+:::
 
 
 # Import
@@ -31,6 +36,7 @@ bn <- read_ods("./datas/patients.ods", sheet = "bnom", na = nax)
 var_label(patients) <- bn$titres
 patients <- patients |>
   remove_constant(na.rm = TRUE) |> 
+  mutate(asa = as.factor(asa)) |>
   mutate(d_inter =  as.numeric(patients$heure_extubation - patients$heure_anesthesie)/60) |> 
   dplyr::select(-starts_with("heure")) 
 var_label(patients$d_inter) <- "Durée intervention (min)"
@@ -48,7 +54,20 @@ tt <- read_ods("./datas/traitement.ods", na = nax) |>
   mutate(across(where(is.character), as.factor))
 bn <- read_ods("./datas/traitement.ods", sheet = "bnom", na = nax)
 var_label(tt) <- bn$titres
-tt <- remove_constant(tt, na.rm = TRUE)
+tt <- remove_constant(tt, na.rm = TRUE) |> 
+  mutate(jeter = cut(volume_jete_ml,
+                     include.lowest = FALSE,
+                     right = FALSE,
+                     dig.lab = 4,
+                     breaks = c(-1,0.1, 100),
+                     labels = c("Non", "Oui"))) |> 
+# Recodage de tt$categorie_medicament
+mutate(categorie_medicament = fct_recode(categorie_medicament,
+    "ANESTHÉSIQUES LOCAUX" = "ANÉSTHESIQUES LOCAUX",
+    "SÉDATIF-ANALGÉSIE" = "BZD/NEUROLEPTIQUES",
+    "SÉDATIF-ANALGÉSIE" = "HYPNOTIQUE"))
+# 
+var_label(tt$jeter) <- "Médicament jeté ?"
 
 
 rm(bn)
