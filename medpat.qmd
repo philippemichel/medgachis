@@ -3,7 +3,11 @@ title: "Facteurs de risque"
 format: html
 ---
 
-::: panel-tabset
+:::: panel-tabset
+::: callout-warning
+Les tableaux montrent s'il y a eu un médicament jeté ou non, les graphiques montrent le volume jeté.
+:::
+
 ```{r}
 #| label: setup
 
@@ -39,11 +43,10 @@ theme_gtsummary_language(language = "fr", decimal.mark = ",")
 theme_gtsummary_journal(journal = "jama")
 options(OutDec = ",")
 ptest <- list(all_continuous() ~ "t.test", all_categorical() ~ "chisq.test")
-ptest2 <- list(all_continuous() ~ "paired.t.test", all_categorical() ~ "chisq.test")
-stt <- list(
-  all_continuous() ~ "{mean} ({sd})",
-  all_categorical() ~ "{n}/{N} ({p}%)"
-)
+ptest2 <- list(all_continuous() ~ "paired.t.test",
+               all_categorical() ~ "chisq.test")
+stt <- list(all_continuous() ~ "{mean} ({sd})",
+            all_categorical() ~ "{n}/{N} ({p}%)")
 ```
 
 # Jeté & Patients
@@ -53,7 +56,7 @@ On recherche des facteurs de risque liés au patient.
 ```{r}
 #| label: medpat-prep
 
-ttp <-left_join(patients, tt, by = c("formule_sys" = "code_patient" ))
+ttp <- left_join(patients, tt, by = c("formule_sys" = "code_patient"))
   
 ```
 
@@ -61,23 +64,23 @@ ttp <-left_join(patients, tt, by = c("formule_sys" = "code_patient" ))
 #| label: medpat-tab1
 #| tab-cap: "Médicaments jetés selon les caractéristiques des patients"
 
-ttp |> 
-  dplyr::select(age, sexe, bmi:type_anesthesie, jeter, d_inter) |>
+ttp |>
+  dplyr::select(age, sexe, bmi:geste_en_urgence, jeter) |>
   tbl_summary(
     statistic = stt,
     missing = "no",
-    by = jeter, 
+    by = jeter,
     percent = "row"
-  ) |> 
+  ) |>
   add_p(test = ptest) |>
-  add_q() |> 
-    add_n() |> 
+  add_q() |>
+  add_n() |>
   bold_labels() |>
   bold_p(q = TRUE) |>
-  modify_header(label ~ " ") |> 
-  as_kable_extra(escape = TRUE) |> 
-   kable_material(c("striped", "hover", "responsive")) |> 
-   scroll_box(width = "100%", height = "650px")
+  modify_header(label ~ " ") |>
+  as_kable_extra(escape = TRUE) |>
+  kable_material(c("striped", "hover", "responsive")) |>
+  scroll_box(width = "100%", height = "650px")
 ```
 
 Plus le geste est simple, sur des patients sans problème plus on jette de médicament. Mention spéciale pour la pose de KTC.
@@ -86,11 +89,85 @@ Plus le geste est simple, sur des patients sans problème plus on jette de médi
 #| label: medpat-tab2
 #| tab-cap: "Médicaments jetés selon les caractéristiques des patients (régression)"
 #| 
-glm(jeter ~ age + bmi + asa + geste_en_urgence + type_anesthesie + d_inter, data = ttp, family = "binomial") |> 
-forest_model(factor_separate_line = TRUE)
+glm(jeter ~ age + bmi + asa + geste_en_urgence,
+    data = ttp,
+    family = "binomial") |>
+  forest_model(factor_separate_line = TRUE)
 ```
 
-L'analyse multifactorielle (régression logistique) confirme qu'il y a moins de médicaments jetés lors des interventions en urgences mais plus lors des ALR seules (pose de KTC).
+L'analyse multifactorielle (régression logistique) confirme qu'il y a plus de médicaments jetés lors des ALR seules (pose de KTC)ou pour les gestes programmés.
+
+```{r}
+#| label: fig-bmi
+#| fig-cap: "Volume jeté selon le BMI du patient"
+
+ttp |>
+  drop_na(bmi, volume_jete_ml) |>
+  ggplot() +
+  aes (x = bmi, y = volume_jete_ml, fill = bmi) +
+  geom_violin(scale = "count") +
+  geom_boxplot(
+    width = 0.1,
+    position = position_dodge(0.9),
+    outlier.shape = NA,
+    fill = "grey90"
+  ) +
+  scale_y_log10() +
+  labs(
+    title = "Volume jeté selon le BMI du patient",
+    subtitle = "p < 0,001",
+    x = "",
+    y = "mL",
+    caption = "Volume (moyenne ± écart-type, échelle logarithmique) jeté selon le BMI du patient"
+  ) +
+  theme_light() +
+  scale_fill_atlassian() +
+  theme(
+    plot.title = element_text(size = 18, face = "bold"),
+    plot.subtitle = element_text(size = 12),
+    axis.title.x = element_blank(),
+    axis.title.y = element_text(size = 12),
+    axis.text.x = element_text(size = 12),
+    axis.text.y = element_text(size = 12),
+    legend.position = "none"
+  ) 
+```
+
+```{r}
+#| label: fig-asa
+#| fig-cap: "Volume jeté selon le score ASA"
+
+ttp |>
+  drop_na(asa, volume_jete_ml) |>
+  ggplot() +
+  aes (x = asa, y = volume_jete_ml, fill = asa) +
+  geom_violin(scale = "count") +
+  geom_boxplot(
+    width = 0.1,
+    position = position_dodge(0.9),
+    outlier.shape = NA,
+    fill = "grey90"
+  ) +
+  scale_y_log10() +
+  labs(
+    title = "Volume jeté selon le score ASAt",
+    subtitle = "p < 0,001",
+    x = "",
+    y = "mL",
+    caption = "Volume (moyenne ± écart-type, échelle logarithmique) jeté selon le score ASA"
+  ) +
+  theme_light() +
+  scale_fill_atlassian() +
+  theme(
+    plot.title = element_text(size = 18, face = "bold"),
+    plot.subtitle = element_text(size = 12),
+    axis.title.x = element_blank(),
+    axis.title.y = element_text(size = 12),
+    axis.text.x = element_text(size = 12),
+    axis.text.y = element_text(size = 12),
+    legend.position = "none"
+  ) 
+```
 
 # Jeté & Intervention
 
@@ -98,34 +175,68 @@ L'analyse multifactorielle (régression logistique) confirme qu'il y a moins de 
 #| label: medinter-tab1
 #| tab-cap: "Médicaments jetés selon les caractéristiques de l'intervention"
 
-ttp |> 
-  dplyr::select(type_anesthesie:d_inter, jeter) |>
+ttp |>
+  dplyr::select(geste_en_urgence:d_inter, jeter) |>
   tbl_summary(
     statistic = stt,
     missing = "no",
-    by = jeter, 
+    by = jeter,
     percent = "row"
-  ) |> 
+  ) |>
   add_p(test = ptest) |>
-  add_q() |> 
-    add_n() |> 
+  add_q() |>
+  add_n() |>
   bold_labels() |>
   bold_p(q = TRUE) |>
-  modify_header(label ~ " ") |> 
-  as_kable_extra(escape = TRUE) |> 
-   kable_material(c("striped", "hover", "responsive")) |> 
-   scroll_box(width = "100%", height = "650px")
+  modify_header(label ~ " ") |>
+  as_kable_extra(escape = TRUE) |>
+  kable_material(c("striped", "hover", "responsive")) |>
+  scroll_box(width = "100%", height = "650px")
 ```
-
 
 ```{r}
-#| label: medpat-tab2
+#| label: medpat-pat2
 #| tab-cap: "Médicaments jetés selon les caractéristiques des patients (régression)"
 #| 
-glm(jeter ~ vvp + type_alr  +  interface_voies_aeriennes + d_inter , data = ttp, family = "binomial") |> 
-forest_model(factor_separate_line = TRUE)
+glm(
+jeter ~ vvp + type_alr  +  interface_voies_aeriennes + d_inter ,
+data = ttp,
+family = "binomial"
+) |>
+    forest_model(factor_separate_line = TRUE)
 ```
 
-Les ALR locale correspondent en grande partie aux poses de KTC ce qui introduit un biais. L'analyse est difficile car certaines variables n'ont de sens que pour les AG, d'autres pour les ALR ce qui introduit un flou & potentiellement des calculs erronés surtout pour la régression. 
-:::
+Les ALR locale correspondent en grande partie aux poses de KTC ce qui introduit un biais. L'analyse est difficile car certaines variables n'ont de sens que pour les AG, d'autres pour les ALR ce qui introduit un flou & potentiellement des calculs erronés surtout pour la régression. Mais on constate néanmoins une tendance : plus le geste est complexe (urgence, ASA élevé, obèse...) moins on jette de médicament.
 
+```{r}
+#| label: fig-duree
+#| fig-cap: Volume jeté selon la durée d'intervention
+
+ttp |>
+  drop_na(d_inter, volume_jete_ml) |>
+  dplyr::filter(type_chirurgie != "Accès veineux central ") |>
+  ggplot() +
+  aes(x = d_inter, y = volume_jete_ml) +
+  geom_point(alpha = 0.3) +
+  geom_smooth(method = "lm", se = TRUE) +
+  scale_y_log10() +
+  labs(
+    title = "Volume jeté selon la durée d'intervention",
+    subtitle = "p < 0,001",
+    x = "Durée d'intervention (min)",
+    y = "Volume jeté (mL)",
+    caption = "Volume (échelle logarithmique) jeté selon la durée d'intervention"
+  ) +
+  theme_light() +
+  scale_color_atlassian() +
+  theme(
+    plot.title = element_text(size = 18, face = "bold"),
+    plot.subtitle = element_text(size = 12),
+    axis.title.x = element_text(size = 12),
+    axis.title.y = element_text(size = 12),
+    axis.text.x = element_text(size = 12),
+    axis.text.y = element_text(size = 12),
+    legend.position = "none"
+  ) 
+```
+::::
